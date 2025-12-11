@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>দিনবদলের এখনই সময়</title>
+
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* Smooth transition */
+        .header-transition {
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
+        }
+    </style>
+</head>
+
+<body class="bg-gray-50">
+
+<header id="mainHeader"
+        class="fixed top-0 left-0 w-full z-50 header-transition bg-transparent">
+    <div class="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center">
+
+        <!-- Left: Logo + Title -->
+        <div class="flex items-center space-x-3">
+            <div class="w-10 h-10 bg-green-700 rounded-full flex items-center justify-center">
+                <span class="text-white text-xl font-bold">🏠</span>
+            </div>
+            <h1 class="text-xl font-semibold text-gray-900">
+                দিনবদলের এখনই সময়
+            </h1>
+        </div>
+
+        <nav class="flex space-x-8 text-gray-700 font-medium">
+            <a href="home.html" class="hover:text-green-700">হোম</a>
+            <a href="report.html" class="hover:text-green-700">সমস্যা রিপোর্ট</a>
+            <a href="safety.html" class="hover:text-green-700">নিরাপত্তা সহায়তা</a>
+            <a href="post.html" class="hover:text-green-700">হারানো-পাওয়া</a>
+            <a href="volunteer.html" class="hover:text-green-700">স্বেচ্ছাসেবক</a>
+            
+                
+            <a href="javascript:void(0);" onclick="openLoginModal()" 
+                class="text-black no-underline text-[16px]  hover:text-teal-600">
+                লগইন করুন
+            </a>
+                
+            <!-- Login Modal -->
+            <div id="loginModal" 
+                class="hidden fixed inset-0 w-full h-full bg-black/60 flex justify-center items-center z-[9999]">
+                
+                <div class="w-[350px] bg-white p-7 rounded-xl shadow-2xl relative mt-4 flex flex-col gap-3">
+                    
+                    <h2 class="text-center mb-1 text-[26px] font-bold">Welcome Back</h2>
+                    <p class="text-center text-gray-600 mb-1">Sign in to your Account</p>
+
+                    <form method="POST" action="" class="flex flex-col gap-3">
+                        
+                        <input type="text" name="username" placeholder="Email" required
+                            class="w-full p-3 border border-gray-400 rounded-md text-[15px] outline-none" />
+
+                        <input type="password" name="password" placeholder="Password" required
+                            class="w-full p-3 border border-gray-400 rounded-md text-[15px] outline-none" />
+
+                        <div class="flex justify-between items-center my-2">
+                            <label class="flex items-center text-[14px] cursor-pointer">
+                                <input type="checkbox" name="remember_me" class="mr-2 cursor-pointer" />
+                                Remember me
+                            </label>
+                            <a href="#" class="text-[#0D7C7C] text-[14px] no-underline">Forgot password?</a>
+                        </div>
+
+                        <button type="submit" 
+                                class="w-full p-3 bg-[#0D7C7C] text-white rounded-md text-[16px] font-semibold hover:bg-[#055B5B]">
+                            Login
+                        </button>
+                    </form>
+
+                    <!-- Divider -->
+                    <div>
+                        <div class="flex items-center justify-center my-4">
+                            <hr class="flex-1 border-gray-300" />
+                            <span class="mx-3 text-gray-500 text-[14px] font-medium">Or continue with</span>
+                            <hr class="flex-1 border-gray-300" />
+                        </div>
+
+                        <div class="flex justify-center mb-2">
+                            <a href="/accounts/google/login/"
+                            class="flex items-center gap-2 px-6 py-2 border border-gray-300 rounded-md text-[15px] 
+                                    bg-white text-gray-700 shadow-sm cursor-pointer no-underline 
+                                    hover:bg-gray-100 hover:shadow-md transition">
+                                <img src="{% static 'images/g.jpeg' %}" alt="Google" class="w-5 h-5">
+                                Continue with Google
+                            </a>
+                        </div>
+                    </div>
+
+                    <a href="#" class="text-center text-[15px] text-gray-800 no-underline mt-2">Sign Up</a>
+                </div>
+            </div>
+
+
+            <script>
+                document.addEventListener('DOMContentLoaded', function() {
+                    const modal = document.getElementById('loginModal');
+
+                    // Click on backdrop to close
+                    modal.addEventListener('click', function(e) {
+                    if (e.target === modal) {
+                        closeLoginModal();
+                    }
+                    });
+                });
+
+                function openLoginModal() {
+                    const modal = document.getElementById("loginModal");
+                    // Remove hidden and ensure display is cleared
+                    modal.classList.remove("hidden");
+                    modal.style.display = ""; // clear inline style if any
+                }
+
+                function closeLoginModal() {
+                    const modal = document.getElementById("loginModal");
+                    modal.classList.add("hidden");
+                    modal.style.display = ""; // avoid leaving display:none inline
+                }
+
+                // Remember me
+                document.addEventListener('DOMContentLoaded', function() {
+                    const checkbox = document.querySelector('input[name="remember_me"]');
+                    if (!checkbox) return;
+
+                    const rememberMe = localStorage.getItem('rememberMe');
+                    if (rememberMe === 'true') {
+                    checkbox.checked = true;
+                    }
+                    checkbox.addEventListener('change', function() {
+                    localStorage.setItem('rememberMe', this.checked);
+                    });
+                });
+            </script>
+
+        </nav>
+    </div>
+</header>
+  
+<main>
+
+<section class="bg-green-800 py-30 px-4">
+    <div class="max-w-4xl mx-auto text-center">
+        <span class="text-red-400 text-4xl">
+            <i class="fa-solid fa-shield-heart"></i>
+        </span>
+        <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4">
+        স্বেচ্ছাসেবক হন
+        </h1>
+        
+        <h3 class="text-lg md:text-xl text-white/90">
+        আপনার সময় এবং দক্ষতা দিয়ে সমাজের উন্নয়নে অবদান রাখুন
+        </h3>
+        <div class="py-8 grid grid-cols-1 md:grid-cols-3 gap-6">
+    
+            <!-- Card 1 -->
+            <div class="bg-white p-6 rounded-lg shadow-md text-center">
+                <div class="text-4xl font-bold text-blue-600 mb-2">৩.৬০+</div>
+                <h3 class="text-lg font-semibold text-gray-800 mb-2">বৃদ্ধির হার</h3>
+                <p class="text-gray-500 text-sm">
+                    মাসিক ব্যবহারকারী বৃদ্ধি
+                </p>
+            </div>
+            
+            <!-- Card 2 -->
+            <div class="bg-white p-6 rounded-lg shadow-md text-center">
+                <div class="text-4xl font-bold text-green-600 mb-2">৩,২০০+</div>
+                <h3 class="text-lg font-semibold text-gray-800 mb-2">সমাধান</h3>
+                <p class="text-gray-500 text-sm">
+                    সফল সমাধানকৃত সমস্যা
+                </p>
+            </div>
+            
+            <!-- Card 3 -->
+            <div class="bg-white p-6 rounded-lg shadow-md text-center">
+                <div class="text-4xl font-bold text-purple-600 mb-2">৯০%+</div>
+                <h3 class="text-lg font-semibold text-gray-800 mb-2">সন্তুষ্টি</h3>
+                <p class="text-gray-500 text-sm">
+                    ব্যবহারকারী সন্তুষ্টির হার
+                </p>
+            </div>
+            
+        </div>
+        
+    </div>
+</section>
+
+<section class="py-16 px-4 bg-gradient-to-b from-white to-gray-50">
+    <div class="max-w-6xl mx-auto">
+        
+        <!-- Heading -->
+        <h1 class="text-3xl md:text-4xl font-bold text-center text-gray-800 mb-12">
+        আমাদের বৈশিষ্ট্যসমূহ
+        </h1>
+        
+        <!-- Features Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        
+        <!-- Feature 1 -->
+        <div class="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
+            <div class="h-2 bg-gradient-to-r from-blue-500 to-blue-600"></div>
+            <div class="p-6 text-center">
+            <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <i class="fa-solid fa-bolt text-blue-600 text-2xl"></i>
+            </div>
+            <h3 class="text-xl font-bold text-gray-800 mb-3">দ্রুত প্রতিক্রিয়া</h3>
+            <p class="text-gray-600">
+                যেকোনো সমস্যার জন্য দ্রুততম সময়ে প্রতিক্রিয়া এবং সমাধান
+            </p>
+            </div>
+        </div>
+        
+        <!-- Feature 2 -->
+        <div class="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
+            <div class="h-2 bg-gradient-to-r from-green-500 to-green-600"></div>
+            <div class="p-6 text-center">
+            <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <i class="fa-solid fa-shield-alt text-green-600 text-2xl"></i>
+            </div>
+            <h3 class="text-xl font-bold text-gray-800 mb-3">সুরক্ষিত তথ্য</h3>
+            <p class="text-gray-600">
+                আপনার সমস্ত তথ্য এনক্রিপ্টেড এবং সম্পূর্ণ সুরক্ষিত
+            </p>
+            </div>
+        </div>
+        
+        <!-- Feature 3 -->
+        <div class="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
+            <div class="h-2 bg-gradient-to-r from-purple-500 to-purple-600"></div>
+            <div class="p-6 text-center">
+            <div class="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <i class="fa-solid fa-users text-purple-600 text-2xl"></i>
+            </div>
+            <h3 class="text-xl font-bold text-gray-800 mb-3">সহযোগীতা</h3>
+            <p class="text-gray-600">
+                সম্প্রদায়ের সদস্যদের সাথে সহযোগিতা করে সমাধান
+            </p>
+            </div>
+        </div>
+        
+        <!-- Feature 4 -->
+        <div class="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
+            <div class="h-2 bg-gradient-to-r from-orange-500 to-orange-600"></div>
+            <div class="p-6 text-center">
+            <div class="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <i class="fa-solid fa-chart-line text-orange-600 text-2xl"></i>
+            </div>
+            <h3 class="text-xl font-bold text-gray-800 mb-3">ট্র্যাকিং</h3>
+            <p class="text-gray-600">
+                বাস্তব সময়ে সমস্যার সমাধানের অগ্রগতি ট্র্যাক করুন
+            </p>
+            </div>
+        </div>
+        
+        </div>
+        
+    </div>
+</section>
+
+<section class="py-12 px-4">
+    <div class="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-4 gap-8">
+        
+        <!-- Left Side - Volunteer Form (Grid 3) -->
+        <div class="lg:col-span-3">
+        <div class="bg-white p-8 rounded-2xl shadow-lg">
+            <h2 class="text-2xl font-bold text-gray-800 mb-2">স্বেচ্ছাসেবক হিসাবে যোগ দিন</h2>
+            <p class="text-gray-600 mb-6">আপনার সম্প্রদায়ের উন্নয়নে সহায়তা করুন</p>
+            
+            <form class="space-y-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- প্রথম নাম -->
+                <div>
+                <label class="block text-gray-700 mb-2">প্রথম নাম *</label>
+                <input type="text" 
+                        class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500"
+                        placeholder="আপনার প্রথম নাম">
+                </div>
+                
+                <!-- শেষ নাম -->
+                <div>
+                <label class="block text-gray-700 mb-2">শেষ নাম *</label>
+                <input type="text" 
+                        class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500"
+                        placeholder="আপনার শেষ নাম">
+                </div>
+            </div>
+            
+            <!-- ইমেইল -->
+            <div>
+                <label class="block text-gray-700 mb-2">ইমেইল *</label>
+                <input type="email" 
+                    class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500"
+                    placeholder="example@email.com">
+            </div>
+            
+            <!-- ফোন নম্বর -->
+            <div>
+                <label class="block text-gray-700 mb-2">ফোন নম্বর *</label>
+                <input type="tel" 
+                    class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500"
+                    placeholder="০১৭XXXXXXXX">
+            </div>
+            
+            <!-- এলাকা -->
+            <div>
+                <label class="block text-gray-700 mb-2">আপনার এলাকা *</label>
+                <select class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500">
+                <option value="">-- এলাকা নির্বাচন করুন --</option>
+                <option value="mirpur">মিরপুর</option>
+                <option value="uttara">উত্তরা</option>
+                <option value="dhanmondi">ধানমন্ডি</option>
+                <option value="gulshan">গুলশান</option>
+                <option value="banani">বনানী</option>
+                <option value="mohammadpur">মোহাম্মদপুর</option>
+                <option value="other">অন্যান্য</option>
+                </select>
+            </div>
+            
+            <!-- দক্ষতা -->
+            <div>
+                <label class="block text-gray-700 mb-2">আপনার দক্ষতা *</label>
+                <div class="grid grid-cols-2 md:grid-cols-3 gap-3">
+                <label class="flex items-center">
+                    <input type="checkbox" class="h-4 w-4 text-green-600 rounded">
+                    <span class="ml-2 text-gray-700">কমিউনিটি সেবা</span>
+                </label>
+                <label class="flex items-center">
+                    <input type="checkbox" class="h-4 w-4 text-green-600 rounded">
+                    <span class="ml-2 text-gray-700">টেকনিকাল সাপোর্ট</span>
+                </label>
+                <label class="flex items-center">
+                    <input type="checkbox" class="h-4 w-4 text-green-600 rounded">
+                    <span class="ml-2 text-gray-700">স্বাস্থ্য সেবা</span>
+                </label>
+                <label class="flex items-center">
+                    <input type="checkbox" class="h-4 w-4 text-green-600 rounded">
+                    <span class="ml-2 text-gray-700">শিক্ষা</span>
+                </label>
+                <label class="flex items-center">
+                    <input type="checkbox" class="h-4 w-4 text-green-600 rounded">
+                    <span class="ml-2 text-gray-700">পরিবেশ</span>
+                </label>
+                <label class="flex items-center">
+                    <input type="checkbox" class="h-4 w-4 text-green-600 rounded">
+                    <span class="ml-2 text-gray-700">অন্যান্য</span>
+                </label>
+                </div>
+            </div>
+            
+            <!-- বার্তা -->
+            <div>
+                <label class="block text-gray-700 mb-2">আপনার বার্তা</label>
+                <textarea class="w-full p-3 border border-gray-300 rounded-lg h-32 focus:ring-2 focus:ring-green-500 focus:border-green-500"
+                        placeholder="কেন আপনি স্বেচ্ছাসেবক হতে চান?"></textarea>
+            </div>
+            
+            <!-- Submit Button -->
+            <button type="submit" 
+                    class="w-full bg-green-600 text-white py-3 rounded-lg font-medium hover:bg-green-700 transition text-lg">
+                স্বেচ্ছাসেবক হিসাবে রেজিস্ট্রেশন করুন
+            </button>
+            </form>
+        </div>
+        </div>
+        
+        <!-- Right Side - Volunteers List (Grid 1) -->
+        <div class="lg:col-span-1">
+        <div class="bg-white p-6 rounded-2xl shadow-lg sticky top-6">
+            <h3 class="text-lg font-bold text-gray-800 mb-4">সক্রিয় স্বেচ্ছাসেবক</h3>
+            
+            <div class="space-y-4">
+            <!-- Volunteer 1 -->
+            <div class="flex items-center gap-3 p-3 bg-gray-50 rounded-lg hover:bg-gray-100 transition">
+                <div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center">
+                <span class="text-green-600 font-bold">রা</span>
+                </div>
+                <div>
+                <p class="font-medium text-gray-800">রহিমা বেগম</p>
+                <p class="text-xs text-gray-500">মিরপুর</p>
+                </div>
+            </div>
+            
+            <!-- Volunteer 2 -->
+            <div class="flex items-center gap-3 p-3 bg-gray-50 rounded-lg hover:bg-gray-100 transition">
+                <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center">
+                <span class="text-blue-600 font-bold">ক</span>
+                </div>
+                <div>
+                <p class="font-medium text-gray-800">করিম আহমেদ</p>
+                <p class="text-xs text-gray-500">উত্তরা</p>
+                </div>
+            </div>
+            
+            <!-- Volunteer 3 -->
+            <div class="flex items-center gap-3 p-3 bg-gray-50 rounded-lg hover:bg-gray-100 transition">
+                <div class="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center">
+                <span class="text-purple-600 font-bold">স</span>
+                </div>
+                <div>
+                <p class="font-medium text-gray-800">সাবিনা আক্তার</p>
+                <p class="text-xs text-gray-500">ধানমন্ডি</p>
+                </div>
+            </div>
+            
+            <!-- Volunteer 4 -->
+            <div class="flex items-center gap-3 p-3 bg-gray-50 rounded-lg hover:bg-gray-100 transition">
+                <div class="w-12 h-12 bg-yellow-100 rounded-full flex items-center justify-center">
+                <span class="text-yellow-600 font-bold">ম</span>
+                </div>
+                <div>
+                <p class="font-medium text-gray-800">মোঃ সোহেল</p>
+                <p class="text-xs text-gray-500">গুলশান</p>
+                </div>
+            </div>
+            
+            <!-- Volunteer 5 -->
+            <div class="flex items-center gap-3 p-3 bg-gray-50 rounded-lg hover:bg-gray-100 transition">
+                <div class="w-12 h-12 bg-red-100 rounded-full flex items-center justify-center">
+                <span class="text-red-600 font-bold">ফ</span>
+                </div>
+                <div>
+                <p class="font-medium text-gray-800">ফারহানা ইসলাম</p>
+                <p class="text-xs text-gray-500">বনানী</p>
+                </div>
+            </div>
+            </div>
+            
+            <!-- Stats -->
+            <div class="mt-6 pt-6 border-t">
+            <div class="text-center">
+                <div class="text-2xl font-bold text-green-600 mb-1">১২৫+</div>
+                <div class="text-sm text-gray-600">সক্রিয় স্বেচ্ছাসেবক</div>
+            </div>
+            </div>
+            
+            <!-- Join Button -->
+            <button class="w-full mt-6 bg-green-50 text-green-600 py-3 rounded-lg font-medium hover:bg-green-100 transition border border-green-200">
+            <i class="fa-solid fa-handshake mr-2"></i>
+            যোগ দিন
+            </button>
+        </div>
+        </div>
+        
+    </div>
+</section>
+
+</main>
+
+
+<footer class="bg-green-800 text-white py-16 px-6">
+    <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-12">
+
+        <!-- Left Section -->
+        <div>
+            <h2 class="text-3xl font-bold mb-3">আপডেট পান</h2>
+            <p class="text-gray-200 mb-6">
+                নতুন ফিচার এবং কমিউনিটি আপডেট সম্পর্কে জানুন
+            </p>
+
+            <label class="text-gray-200 text-sm">আপনার ইমেইল</label>
+            <input type="email"
+                   class="w-full bg-transparent border-b border-gray-300 focus:outline-none py-2 text-white mb-4"
+                   placeholder="ইমেইল লিখুন">
+
+            <button class="mt-3 bg-white text-green-800 px-6 py-3 rounded-full font-semibold flex items-center space-x-2">
+                <span>সাবস্ক্রাইব করুন</span>
+                <span>→</span>
+            </button>
+
+            <div class="mt-10 flex space-x-8 text-gray-200">
+                <a href="#" class="hover:text-white">Facebook</a>
+                <a href="#" class="hover:text-white">Twitter</a>
+                <a href="#" class="hover:text-white">Instagram</a>
+            </div>
+        </div>
+
+        <!-- Middle Section -->
+        <div>
+            <h3 class="text-xl font-semibold mb-4">দ্রুত লিঙ্ক</h3>
+            <ul class="space-y-3 text-gray-200">
+                <li><a href="#" class="hover:text-white">সমস্যা রিপোর্ট</a></li>
+                <li><a href="#" class="hover:text-white">নিরাপত্তা সহায়তা</a></li>
+                <li><a href="#" class="hover:text-white">স্বেচ্ছাসেবক দল</a></li>
+                <li><a href="#" class="hover:text-white">CCTV আপডেট</a></li>
+            </ul>
+        </div>
+
+        <!-- Right Section -->
+        <div>
+            <h3 class="text-xl font-semibold mb-4">যোগাযোগ</h3>
+
+            <p class="mb-4">
+                ফোন: +৮৮০ ১১০০-০০০০০
+            </p>
+
+            <p class="mb-4">
+                ইমেইল: info@dinbodol.com
+            </p>
+
+            <h4 class="font-semibold mb-2">ঠিকানা</h4>
+            <p class="text-gray-200">
+                ধানমন্ডি, ঢাকা-১২০৫ <br>
+                বাংলাদেশ
+            </p>
+        </div>
+    </div>
+
+    <!-- Bottom Line -->
+    <div class="max-w-7xl mx-auto mt-12 pt-6 border-t border-gray-600 flex flex-col md:flex-row justify-between text-gray-300 text-sm">
+
+        <p>© ২০২৫ দিনেরবেলের এখনই সময়</p>
+
+        <div class="flex space-x-6 mt-4 md:mt-0">
+            <a href="#" class="hover:text-white">গোপনীয়তা নীতি</a>
+            <a href="#" class="hover:text-white">শর্তাবলী</a>
+            <a href="#" class="hover:text-white">Website Builder</a>
+            <a href="customer_dashboard.html" class="hover:text-white">User</a>
+            <a href="volunteer_dashboard.html" class="hover:text-white">Volunteer</a>
+            <a href="adminprofile.html" class="hover:text-white">Admin</a>
+        </div>
+    </div>
+</footer>
+
+
+<!-- Scroll Script -->
+<script>
+    const header = document.getElementById("mainHeader");
+
+    window.addEventListener("scroll", () => {
+        if (window.scrollY > 20) {
+            header.classList.remove("bg-transparent");
+            header.classList.add("bg-white", "shadow-md");
+        } else {
+            header.classList.remove("bg-white", "shadow-md");
+            header.classList.add("bg-transparent");
+        }
+    });
+</script>
+
+</body>
+</html>   

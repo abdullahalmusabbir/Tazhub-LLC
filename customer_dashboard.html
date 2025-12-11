@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* Smooth transition */
+        .header-transition {
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
+        }
+    </style>
+</head>
+
+<body class="bg-gray-50">
+
+<header id="mainHeader"
+        class="fixed top-0 left-0 w-full z-50 header-transition bg-transparent">
+    <div class="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center">
+
+        <!-- Left: Logo + Title -->
+        <div class="flex items-center space-x-3">
+            <div class="w-10 h-10 bg-green-700 rounded-full flex items-center justify-center">
+                <span class="text-white text-xl font-bold">🏠</span>
+            </div>
+            <h1 class="text-xl font-semibold text-gray-900">
+                দিনবদলের এখনই সময়
+            </h1>
+        </div>
+
+        <nav class="flex space-x-8 text-gray-700 font-medium">
+            <a href="home.html" class="hover:text-green-700">হোম</a>
+            <a href="report.html" class="hover:text-green-700">সমস্যা রিপোর্ট</a>
+            <a href="safety.html" class="hover:text-green-700">নিরাপত্তা সহায়তা</a>
+            <a href="post.html" class="hover:text-green-700">হারানো-পাওয়া</a>
+            <a href="volunteer.html" class="hover:text-green-700">স্বেচ্ছাসেবক</a>
+            <a href="#" class="hover:text-teal-600 mr-16">লগ আউট</a>
+        </nav>
+    </div>
+</header>
+
+<section class="bg-white pb-8 pt-25 ">
+  <div class="mx-auto bg-white rounded-lg shadow-sm p-6" style="max-width: 85rem;">
+
+    <h1 class="text-2xl font-bold text-gray-800 mb-2">আমার ড্যাশবোর্ড</h1>
+    <p class="text-gray-600 mb-6">আপনার রিপোর্ট এবং কার্যক্রম দেখুন</p>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+
+      <div class="rounded-lg p-4 flex flex-col items-start transition-shadow duration-300 hover:shadow-lg">
+          <div class="bg-blue-500 text-white p-2 rounded-md mb-2">
+              <!-- icon -->
+              <span class="text-white text-xl">
+                  <i class="fa-solid fa-file-lines"></i>
+              </span>
+          </div>
+          <h2 class="text-lg font-semibold text-blue-800">মোট রিপোর্ট</h2>
+          <p class="text-blue-700 text-xl font-bold">৮</p>
+      </div>
+
+      <div class="rounded-lg p-4 flex flex-col items-start transition-shadow duration-300 hover:shadow-lg">
+          <div class="bg-green-500 text-white p-2 rounded-md mb-2">
+              <!-- icon -->
+              <span class="text-white text-xl">
+                <i class="fa-solid fa-check-circle"></i>
+              </span>
+          </div>
+          <h2 class="text-lg font-semibold text-green-800">সমাধান হয়েছে</h2>
+          <p class="text-green-700 text-xl font-bold">৫</p>
+      </div>
+      
+
+      <div class="rounded-lg p-4 flex flex-col items-start transition-shadow duration-300 hover:shadow-lg">
+          <div class="bg-[#f59e0b] text-white p-2 rounded-md mb-2">
+              <!-- icon -->
+              <span class="text-white text-xl">
+                <i class="fa-solid fa-gears"></i>
+              </span>
+          </div>
+          <h2 class="text-lg font-semibold text-orange-800">প্রক্রিয়াধীন</h2>
+          <p class="text-orange-700 text-xl font-bold">২</p>
+      </div>      
+      
+
+      <div class="rounded-lg p-4 flex flex-col items-start transition-shadow duration-300 hover:shadow-lg">
+          <div class="bg-[#ef4444] text-white p-2 rounded-md mb-2">
+              <!-- icon -->
+              <span class="text-white text-xl">
+                <i class="fa-solid fa-clock"></i>
+              </span>
+          </div>
+          <h2 class="text-lg font-semibold text-red-800">পেন্ডিং</h2>
+          <p class="text-red-700 text-xl font-bold">১</p>
+      </div>
+      
+    </div>
+  </div>
+</section>
+
+<section class="bg-white pb-8 pt-8 ">
+  <div class="mx-auto bg-white rounded-lg shadow-md p-6" style="max-width: 85rem;">
+    
+    <h1 class="text-2xl font-bold text-gray-800 mb-2">দ্রুত অ্যাকশন</h1>
+  
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            
+      <section class="bg-white p-4 rounded-lg shadow-sm flex items-center border border-green-500 hover:shadow-md transition-shadow duration-300 cursor-pointer">
+        <div class="bg-green-500 text-white p-2 rounded-full mr-4">
+          <span class="text-white text-2xl">
+            <i class="fa-solid fa-plus"></i>
+          </span>
+        </div>
+        <div>
+          <h2 class="text-lg font-semibold text-black">নতুন রিপোর্ট</h2>
+          <p class="text-gray-700 ">সমস্যা জানান</p>
+        </div>
+      </section>
+
+      
+      <section class="bg-white p-4 rounded-lg shadow-sm flex items-center border border-blue-500 hover:shadow-md transition-shadow duration-300 cursor-pointer">
+        <div class="bg-blue-500 text-white p-2 rounded-full mr-4">
+          <span class="text-white text-xl">
+            <i class="fa-solid fa-magnifying-glass"></i>
+          </span>
+        </div>
+        <div>
+          <h2 class="text-lg font-semibold text-black">হারানো-পাওয়া</h2>
+          <p class="text-gray-700 ">পোস্ট করুন</p>
+        </div>
+      </section>
+
+      
+      <section class="bg-white p-4 rounded-lg shadow-sm flex items-center border border-red-500 hover:shadow-md transition-shadow duration-300 cursor-pointer">
+        <div class="bg-red-500 text-white p-2 rounded-full mr-4">
+          <span class="text-white text-xl">
+            <i class="fa-solid fa-shield-halved"></i>
+          </span>
+        </div>
+        <div>
+          <h2 class="text-lg font-semibold text-black">নিরাপত্তা সহায়তা</h2>
+          <p class="text-gray-700 ">অভিযোগ করুন</p>
+        </div>
+      </section>
+    </div>
+  </div>
+</section>
+
+<section class="bg-white pb-8 pt-8 mx-auto bg-white rounded-lg shadow-md p-6" style="max-width: 85rem;">
+    <!-- Tabs -->
+    <div class="flex gap-6 border-b pb-3">
+        <button id="tab-report" class="tab-btn active-tab">আমার রিপোর্ট</button>
+        <button id="tab-lost" class="tab-btn">হারানো-পাওয়া</button>
+        <button id="tab-profile" class="tab-btn">প্রোফাইল</button>
+    </div>
+
+    <!-- Content Divs -->
+    <div id="content-report" class="tab-content mt-6">
+
+        <h1 class="text-2xl font-semibold mb-6">আমার রিপোর্টসমূহ</h1>
+
+        <!-- Single Report Card -->
+        <div class="bg-white border rounded-xl p-5 mb-6 shadow-sm">
+
+            <div class="flex justify-between">
+                <h2 class="text-xl font-semibold">রাস্তা মেরামত প্রয়োজন  <span class="text-sm font-normal bg-blue-100 text-blue-600 px-2 py-1 rounded-full">রাস্তা</span> </h2>
+                <span class="text-sm bg-blue-100 text-blue-600 px-3 py-1 rounded-full">
+                    প্রক্রিয়াধীন
+                </span>
+            </div>
+
+            <div class="mt-3 flex items-center gap-2 text-gray-700">
+                <i class="fa-solid fa-location-dot"></i>
+                <p>মিরপুর ১০</p>
+            </div>
+
+            
+
+            <div class="flex justify-between items-center ">
+                <div class="mt-2 flex items-center gap-2 text-gray-700">
+                <i class="fa-solid fa-calendar-days"></i>
+                    <p>২০২৪-০১-১৫</p>
+                </div>
+                <div class="flex gap-3">
+                    <a href="report2.html" class="bg-green-500 text-white px-4 py-2 rounded-lg">
+                        বিস্তারিত দেখুন
+                    </a>
+                    
+                </div>
+            </div>
+        </div>
+
+        <!-- Second Report -->
+        <div class="bg-white border rounded-xl p-5 mb-6 shadow-sm">
+
+            <div class="flex justify-between">
+                <h2 class="text-xl font-semibold">স্ট্রিট লাইট নষ্ট  <span class="text-sm font-normal bg-blue-100 text-blue-600 px-2 py-1 rounded-full">বিদ্যুৎ</span> </h2>
+                <span class="text-sm bg-green-100 text-green-600 px-3 py-1 rounded-full">
+                    সমাধান হয়েছে
+                </span>
+            </div>
+
+            <div class="mt-3 flex items-center gap-2 text-gray-700">
+                <i class="fa-solid fa-location-dot"></i>
+                <p>মিরপুর ১১</p>
+            </div>
+
+            
+
+            <div class="flex justify-between items-center ">
+                <div class="mt-2 flex items-center gap-2 text-gray-700">
+                <i class="fa-solid fa-calendar-days"></i>
+                    <p>২০২৪-০১-১৫</p>
+                </div>
+                <div class="flex gap-3">
+                    <a href="report2.html" class="bg-green-500 text-white px-4 py-2 rounded-lg">
+                        বিস্তারিত দেখুন
+                    </a>
+                    
+                </div>
+            </div>
+        </div>
+
+        <!-- Third Report -->
+        <div class="bg-white border rounded-xl p-5 mb-6 shadow-sm">
+
+            <div class="flex justify-between">
+                <h2 class="text-xl font-semibold">পানির চাপ কম  <span class="text-sm font-normal bg-blue-100 text-blue-600 px-2 py-1 rounded-full">পানি</span> </h2>
+                <span class="text-sm bg-yellow-100 text-yellow-600 px-3 py-1 rounded-full">
+                    পেন্ডিং 
+                </span>
+            </div>
+
+            <div class="mt-3 flex items-center gap-2 text-gray-700">
+                <i class="fa-solid fa-location-dot"></i>
+                <p>মিরপুর ১১</p>
+            </div>
+
+            
+
+            <div class="flex justify-between items-center ">
+                <div class="mt-2 flex items-center gap-2 text-gray-700">
+                <i class="fa-solid fa-calendar-days"></i>
+                    <p>২০২৪-০১-১৫</p>
+                </div>
+                <div class="flex gap-3">
+                    <a href="report2.html" class="bg-green-500 text-white px-4 py-2 rounded-lg">
+                        বিস্তারিত দেখুন
+                    </a>
+                    
+                </div>
+            </div>
+        </div>
+
+        
+
+    </div>
+
+
+    <div id="content-lost" class="tab-content mt-6 hidden">
+        <h1 class="text-2xl font-semibold mb-6">হারানো-পাওয়া</h1>
+
+        <!-- Single Report Card -->
+        <div class="bg-white border rounded-xl p-5 mb-6 shadow-sm">
+
+            <div class="flex justify-between">
+                <h2 class="text-xl font-semibold">মোবাইল ফোন  <span class="text-sm font-normal bg-red-100 text-red-600 px-2 py-1 rounded-full">হারানো</span>  <span class="text-sm font-normal bg-blue-100 text-blue-600 px-2 py-1 rounded-full">ইলেকট্রনিক্স</span></h2>
+                <span class="text-sm bg-blue-100 text-blue-600 px-3 py-1 rounded-full">
+                    প্রক্রিয়াধীন
+                </span>
+            </div>
+
+            <div class="mt-3 flex items-center gap-2 text-gray-700">
+                <i class="fa-solid fa-location-dot"></i>
+                <p>মিরপুর ১০</p>
+            </div>
+
+            
+
+            <div class="flex justify-between items-center ">
+                <div class="mt-2 flex items-center gap-2 text-gray-700">
+                <i class="fa-solid fa-calendar-days"></i>
+                    <p>২০২৪-০১-১৫</p>
+                </div>
+                <div class="flex gap-3">
+                    <a href="lost.html"class="bg-green-500 text-white px-4 py-2 rounded-lg">
+                        বিস্তারিত দেখুন
+                    </a>
+                    
+                </div>
+            </div>
+        </div>
+
+        <!-- Second Report -->
+        <div class="bg-white border rounded-xl p-5 mb-6 shadow-sm">
+
+            <div class="flex justify-between">
+                <h2 class="text-xl font-semibold">চাবির গোছা  <span class="text-sm font-normal bg-red-100 text-red-600 px-2 py-1 rounded-full">পাওয়া</span>  <span class="text-sm font-normal bg-blue-100 text-blue-600 px-2 py-1 rounded-full">ব্যক্তিগত</span></h2>
+                <span class="text-sm bg-blue-100 text-blue-600 px-3 py-1 rounded-full">
+                    প্রক্রিয়াধীন
+                </span>
+            </div>
+
+            <div class="mt-3 flex items-center gap-2 text-gray-700">
+                <i class="fa-solid fa-location-dot"></i>
+                <p>মিরপুর ১০</p>
+            </div>
+
+            
+
+            <div class="flex justify-between items-center ">
+                <div class="mt-2 flex items-center gap-2 text-gray-700">
+                <i class="fa-solid fa-calendar-days"></i>
+                    <p>২০২৪-০১-১৫</p>
+                </div>
+                <div class="flex gap-3">
+                    <a href="{% url "lost"%}" class="bg-green-500 text-white px-4 py-2 rounded-lg">
+                        বিস্তারিত দেখুন
+                    </a>
+                    
+                </div>
+            </div>
+        </div>
+
+        <!-- Third Report -->
+        <div class="bg-white border rounded-xl p-5 mb-6 shadow-sm">
+
+            <div class="flex justify-between">
+                <h2 class="text-xl font-semibold">মোবাইল ফোন  <span class="text-sm font-normal bg-red-100 text-red-600 px-2 py-1 rounded-full">হারানো</span>  <span class="text-sm font-normal bg-blue-100 text-blue-600 px-2 py-1 rounded-full">ইলেকট্রনিক্স</span></h2>
+                <span class="text-sm bg-blue-100 text-blue-600 px-3 py-1 rounded-full">
+                    প্রক্রিয়াধীন
+                </span>
+            </div>
+
+            <div class="mt-3 flex items-center gap-2 text-gray-700">
+                <i class="fa-solid fa-location-dot"></i>
+                <p>মিরপুর ১০</p>
+            </div>
+
+            
+
+            <div class="flex justify-between items-center ">
+                <div class="mt-2 flex items-center gap-2 text-gray-700">
+                <i class="fa-solid fa-calendar-days"></i>
+                    <p>২০২৪-০১-১৫</p>
+                </div>
+                <div class="flex gap-3">
+                    <a href="{% url "lost"%}" class="bg-green-500 text-white px-4 py-2 rounded-lg">
+                        বিস্তারিত দেখুন
+                    </a>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="content-profile" class="tab-content mt-6 hidden">
+
+        <div class="bg-white p-8 rounded-xl shadow-sm max-w-3xl">
+
+            <div class="flex items-center gap-6 border-b pb-6">
+
+                <!-- Profile Image -->
+                <div>
+                    <div class="w-28 h-28 bg-blue-100 rounded-full flex items-center justify-center">
+                        <i class="fa-solid fa-user text-5xl text-blue-600"></i>
+                    </div>
+                </div>
+
+                <!-- Name & Info -->
+                <div>
+                    <h2 class="text-2xl font-semibold">আব্দুল করিম</h2>
+                    <p class="text-gray-600">ইউজার ID: U001</p>
+
+                    <span class="inline-block mt-2 bg-green-100 text-green-700 px-4 py-1 text-sm rounded-full">
+                        সক্রিয় সদস্য
+                    </span>
+                </div>
+            </div>
+
+            <!-- Phone -->
+            <div class="mt-6 border-b pb-4">
+                <p class="text-gray-600">ফোন নম্বর</p>
+                <p class="font-medium mt-1">০১৯১২৩৪৫৬৭৮</p>
+            </div>
+
+            <!-- Email -->
+            <div class="mt-6 border-b pb-4">
+                <p class="text-gray-600">ইমেইল</p>
+                <p class="font-medium mt-1">abdul.karim@example.com</p>
+            </div>
+
+            <!-- Area -->
+            <div class="mt-6 border-b pb-4">
+                <p class="text-gray-600">এলাকা</p>
+                <p class="font-medium mt-1">মিরপুর ১০, ঢাকা</p>
+            </div>
+
+            <!-- Join Date -->
+            <div class="mt-6 border-b pb-4">
+                <p class="text-gray-600">যোগদানের তারিখ</p>
+                <p class="font-medium mt-1">১০ জানুয়ারি, ২০২৪</p>
+            </div>
+
+            <!-- Edit Button -->
+            <div class="mt-8">
+                <button class="bg-green-600 text-white px-6 py-3 rounded-lg hover:bg-green-700 transition">
+                    প্রোফাইল সম্পাদনা করুন
+                </button>
+            </div>
+
+        </div>
+    </div>
+
+</section>
+
+<!-- Scripts -->
+<script>
+    // Tab buttons
+    const tabs = document.querySelectorAll(".tab-btn");
+
+    // Tab contents
+    const contents = document.querySelectorAll(".tab-content");
+
+    tabs.forEach(tab => {
+        tab.addEventListener("click", () => {
+            // remove active class from all buttons
+            tabs.forEach(btn => btn.classList.remove("active-tab"));
+
+            // add active class to clicked button
+            tab.classList.add("active-tab");
+
+            // hide all contents
+            contents.forEach(content => content.classList.add("hidden"));
+
+            // show clicked content
+            const target = tab.id.replace("tab-", "content-");
+            document.getElementById(target).classList.remove("hidden");
+        });
+    });
+</script>
+
+<!-- Tailwind style for active tab -->
+<style>
+    .tab-btn {
+        padding: 6px 10px;
+        font-size: 16px;
+        color: #555;
+    }
+    .active-tab {
+        color: #16a34a;
+        font-weight: 600;
+        border-bottom: 2px solid #16a34a;
+    }
+</style>
+
+
+<footer class="bg-green-800 text-white py-16 px-6">
+    <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-12">
+
+        <!-- Left Section -->
+        <div>
+            <h2 class="text-3xl font-bold mb-3">আপডেট পান</h2>
+            <p class="text-gray-200 mb-6">
+                নতুন ফিচার এবং কমিউনিটি আপডেট সম্পর্কে জানুন
+            </p>
+
+            <label class="text-gray-200 text-sm">আপনার ইমেইল</label>
+            <input type="email"
+                   class="w-full bg-transparent border-b border-gray-300 focus:outline-none py-2 text-white mb-4"
+                   placeholder="ইমেইল লিখুন">
+
+            <button class="mt-3 bg-white text-green-800 px-6 py-3 rounded-full font-semibold flex items-center space-x-2">
+                <span>সাবস্ক্রাইব করুন</span>
+                <span>→</span>
+            </button>
+
+            <div class="mt-10 flex space-x-8 text-gray-200">
+                <a href="#" class="hover:text-white">Facebook</a>
+                <a href="#" class="hover:text-white">Twitter</a>
+                <a href="#" class="hover:text-white">Instagram</a>
+            </div>
+        </div>
+
+        <!-- Middle Section -->
+        <div>
+            <h3 class="text-xl font-semibold mb-4">দ্রুত লিঙ্ক</h3>
+            <ul class="space-y-3 text-gray-200">
+                <li><a href="#" class="hover:text-white">সমস্যা রিপোর্ট</a></li>
+                <li><a href="#" class="hover:text-white">নিরাপত্তা সহায়তা</a></li>
+                <li><a href="#" class="hover:text-white">স্বেচ্ছাসেবক দল</a></li>
+                <li><a href="#" class="hover:text-white">CCTV আপডেট</a></li>
+            </ul>
+        </div>
+
+        <!-- Right Section -->
+        <div>
+            <h3 class="text-xl font-semibold mb-4">যোগাযোগ</h3>
+
+            <p class="mb-4">
+                ফোন: +৮৮০ ১১০০-০০০০০
+            </p>
+
+            <p class="mb-4">
+                ইমেইল: info@dinbodol.com
+            </p>
+
+            <h4 class="font-semibold mb-2">ঠিকানা</h4>
+            <p class="text-gray-200">
+                ধানমন্ডি, ঢাকা-১২০৫ <br>
+                বাংলাদেশ
+            </p>
+        </div>
+    </div>
+
+    <!-- Bottom Line -->
+    <div class="max-w-7xl mx-auto mt-12 pt-6 border-t border-gray-600 flex flex-col md:flex-row justify-between text-gray-300 text-sm">
+
+        <p>© ২০২৫ দিনেরবেলের এখনই সময়</p>
+
+        <div class="flex space-x-6 mt-4 md:mt-0">
+            <a href="#" class="hover:text-white">গোপনীয়তা নীতি</a>
+            <a href="#" class="hover:text-white">শর্তাবলী</a>
+            <a href="#" class="hover:text-white">Website Builder</a>
+            <a href="customer_dashboard.html" class="hover:text-white">User</a>
+            <a href="volunteer_dashboard.html" class="hover:text-white">Volunteer</a>
+            <a href="adminprofile.html" class="hover:text-white">Admin</a>
+        </div>
+    </div>
+</footer>
+
+
+<!-- Scroll Script -->
+<script>
+    const header = document.getElementById("mainHeader");
+
+    window.addEventListener("scroll", () => {
+        if (window.scrollY > 20) {
+            header.classList.remove("bg-transparent");
+            header.classList.add("bg-white", "shadow-md");
+        } else {
+            header.classList.remove("bg-white", "shadow-md");
+            header.classList.add("bg-transparent");
+        }
+    });
+</script>
+
+</body>
+</html>  

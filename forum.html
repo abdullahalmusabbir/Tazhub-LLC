@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>দিনবদলের এখনই সময়</title>
+
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* Smooth transition */
+        .header-transition {
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
+        }
+    </style>
+</head>
+
+<body class="bg-gray-50">
+
+<header id="mainHeader"
+        class="fixed top-0 left-0 w-full z-50 header-transition bg-transparent">
+    <div class="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center">
+
+        <!-- Left: Logo + Title -->
+        <div class="flex items-center space-x-3">
+            <div class="w-10 h-10 bg-green-700 rounded-full flex items-center justify-center">
+                <span class="text-white text-xl font-bold">🏠</span>
+            </div>
+            <h1 class="text-xl font-semibold text-gray-900">
+                দিনবদলের এখনই সময়
+            </h1>
+        </div>
+
+        <nav class="flex space-x-8 text-gray-700 font-medium">
+            <a href="home.html" class="hover:text-green-700">হোম</a>
+            <a href="report.html" class="hover:text-green-700">সমস্যা রিপোর্ট</a>
+            <a href="safety.html" class="hover:text-green-700">নিরাপত্তা সহায়তা</a>
+            <a href="post.html" class="hover:text-green-700">হারানো-পাওয়া</a>
+            <a href="volunteer.html" class="hover:text-green-700">স্বেচ্ছাসেবক</a>
+            
+                
+            <a href="javascript:void(0);" onclick="openLoginModal()" 
+                class="text-black no-underline text-[16px]  hover:text-teal-600">
+                লগইন করুন
+            </a>
+                
+            <!-- Login Modal -->
+            <div id="loginModal" 
+                class="hidden fixed inset-0 w-full h-full bg-black/60 flex justify-center items-center z-[9999]">
+                
+                <div class="w-[350px] bg-white p-7 rounded-xl shadow-2xl relative mt-4 flex flex-col gap-3">
+                    
+                    <h2 class="text-center mb-1 text-[26px] font-bold">Welcome Back</h2>
+                    <p class="text-center text-gray-600 mb-1">Sign in to your Account</p>
+
+                    <form method="POST" action="" class="flex flex-col gap-3">
+                        
+                        <input type="text" name="username" placeholder="Email" required
+                            class="w-full p-3 border border-gray-400 rounded-md text-[15px] outline-none" />
+
+                        <input type="password" name="password" placeholder="Password" required
+                            class="w-full p-3 border border-gray-400 rounded-md text-[15px] outline-none" />
+
+                        <div class="flex justify-between items-center my-2">
+                            <label class="flex items-center text-[14px] cursor-pointer">
+                                <input type="checkbox" name="remember_me" class="mr-2 cursor-pointer" />
+                                Remember me
+                            </label>
+                            <a href="#" class="text-[#0D7C7C] text-[14px] no-underline">Forgot password?</a>
+                        </div>
+
+                        <button type="submit" 
+                                class="w-full p-3 bg-[#0D7C7C] text-white rounded-md text-[16px] font-semibold hover:bg-[#055B5B]">
+                            Login
+                        </button>
+                    </form>
+
+                    <!-- Divider -->
+                    <div>
+                        <div class="flex items-center justify-center my-4">
+                            <hr class="flex-1 border-gray-300" />
+                            <span class="mx-3 text-gray-500 text-[14px] font-medium">Or continue with</span>
+                            <hr class="flex-1 border-gray-300" />
+                        </div>
+
+                        <div class="flex justify-center mb-2">
+                            <a href="/accounts/google/login/"
+                            class="flex items-center gap-2 px-6 py-2 border border-gray-300 rounded-md text-[15px] 
+                                    bg-white text-gray-700 shadow-sm cursor-pointer no-underline 
+                                    hover:bg-gray-100 hover:shadow-md transition">
+                                <img src="{% static 'images/g.jpeg' %}" alt="Google" class="w-5 h-5">
+                                Continue with Google
+                            </a>
+                        </div>
+                    </div>
+
+                    <a href="#" class="text-center text-[15px] text-gray-800 no-underline mt-2">Sign Up</a>
+                </div>
+            </div>
+
+
+            <script>
+                document.addEventListener('DOMContentLoaded', function() {
+                    const modal = document.getElementById('loginModal');
+
+                    // Click on backdrop to close
+                    modal.addEventListener('click', function(e) {
+                    if (e.target === modal) {
+                        closeLoginModal();
+                    }
+                    });
+                });
+
+                function openLoginModal() {
+                    const modal = document.getElementById("loginModal");
+                    // Remove hidden and ensure display is cleared
+                    modal.classList.remove("hidden");
+                    modal.style.display = ""; // clear inline style if any
+                }
+
+                function closeLoginModal() {
+                    const modal = document.getElementById("loginModal");
+                    modal.classList.add("hidden");
+                    modal.style.display = ""; // avoid leaving display:none inline
+                }
+
+                // Remember me
+                document.addEventListener('DOMContentLoaded', function() {
+                    const checkbox = document.querySelector('input[name="remember_me"]');
+                    if (!checkbox) return;
+
+                    const rememberMe = localStorage.getItem('rememberMe');
+                    if (rememberMe === 'true') {
+                    checkbox.checked = true;
+                    }
+                    checkbox.addEventListener('change', function() {
+                    localStorage.setItem('rememberMe', this.checked);
+                    });
+                });
+            </script>
+
+        </nav>
+    </div>
+</header>
+  
+  
+<main class="pt-24 pb-16 px-4">
+    <section>
+        <div class="max-w-4xl mx-auto bg-white p-5 rounded-xl">
+
+            <!-- Top: tag + views -->
+            <div class="flex items-center gap-3 text-sm text-gray-600 mb-3">
+                <span class="px-3 py-1 bg-green-100 text-green-700 rounded-full">টিপস</span>
+                
+                <span class="flex items-center gap-1">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none"
+                        viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.4">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="M2.458 12C3.732 7.943 7.523 5 12 5s8.268 2.943 9.542 7c-1.274 4.057-5.065 7-9.542 7S3.732 16.057 2.458 12z" />
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                    </svg>
+                    <span>১৪৫ ভিউ</span>
+                </span>
+                
+                <div class="ml-auto bg-green-100 hover:bg-green-600 px-3 py-1 rounded-xl">
+                    <a href="comment.html" class="text-green-600  hover:text-white font-medium">
+                        Comment
+                    </a>
+                </div>
+            </div>
+
+            <!-- Title -->
+            <h1 class="text-2xl font-bold text-gray-900 mb-2">
+                নতুন স্বেচ্ছাসেবকদের জন্য প্রশিক্ষণ টিপস
+            </h1>
+
+            <!-- Author row -->
+            <div class="flex items-center gap-3 text-sm text-gray-600 mb-5">
+                <div class="w-8 h-8 rounded-full bg-gray-200 flex items-center justify-center text-sm font-semibold text-gray-600">
+                ক
+                </div>
+                <span>করিম হোসেন</span>
+
+                <span class="flex items-center gap-1">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none"
+                    viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.4">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                    d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                ২ ঘন্টা আগে
+                </span>
+            </div>
+
+            <!-- Body text -->
+            <div class="bg-gray-50 p-5 rounded-xl text-gray-800 leading-7 mb-6">
+                নতুন স্বেচ্ছাসেবকদের জন্য কিছু গুরুত্বপূর্ণ টিপস শেয়ার করছি। প্রথমত, সর্বসময় সময়ে পৌঁছানোর চেষ্টা করুন।
+                দ্বিতীয়ত, কমিউনিটির সাথে ভালো সম্পর্ক তৈরি করুন। তৃতীয়ত, প্রতিটি কাজে মনোযোগ সহকারে অংশগ্রহণ করুন।
+                চতুর্থত, নিয়মিত রিপোর্ট জমা দিন এবং আপডেট রাখুন। পরিশেষে, অন্যান্য স্বেচ্ছাসেবকদের সাথে সহযোগিতা করুন এবং অভিজ্ঞতা শেয়ার করুন।
+            </div>
+            
+            <div class="space-y-5 mb-6">
+                <div class="w-full bg-white border border-gray-200 rounded-xl p-5 shadow-sm">
+                    <!-- Header -->
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center gap-3">
+                        <!-- Avatar -->
+                        <img src="https://i.pravatar.cc/80" class="w-12 h-12 rounded-full object-cover" />
+
+                        <div>
+                            <h3 class="text-lg font-semibold text-gray-900">সালমা আক্তার</h3>
+                            <p class="text-sm text-gray-500">২ ঘন্টা আগে</p>
+                        </div>
+                        </div>
+
+                        <!-- Like -->
+                        <div class="flex items-center gap-1 text-gray-600 text-sm cursor-pointer">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none"
+                            viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                            d="M5 15l7-7 7 7" />
+                        </svg>
+                        <span>5</span>
+                        </div>
+                    </div>
+
+                    <!-- Comment text -->
+                    <p class="mt-4 text-gray-800 leading-7">
+                        খুবই সহায়ক তথ্য! আমি গত সপ্তাহে একেই পরিস্থিতির সম্মুখীন হয়েছিলাম এবং এই পদক্ষেপ অনুসরণ করে 
+                        সফলভাবে সমাধান করতে পেরেছি।
+                    </p>
+
+                    </div>
+
+            </div>
+
+            
+
+        </div>
+    </section>
+
+</main>
+
+
+<footer class="bg-green-800 text-white py-16 px-6">
+    <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-12">
+
+        <!-- Left Section -->
+        <div>
+            <h2 class="text-3xl font-bold mb-3">আপডেট পান</h2>
+            <p class="text-gray-200 mb-6">
+                নতুন ফিচার এবং কমিউনিটি আপডেট সম্পর্কে জানুন
+            </p>
+
+            <label class="text-gray-200 text-sm">আপনার ইমেইল</label>
+            <input type="email"
+                   class="w-full bg-transparent border-b border-gray-300 focus:outline-none py-2 text-white mb-4"
+                   placeholder="ইমেইল লিখুন">
+
+            <button class="mt-3 bg-white text-green-800 px-6 py-3 rounded-full font-semibold flex items-center space-x-2">
+                <span>সাবস্ক্রাইব করুন</span>
+                <span>→</span>
+            </button>
+
+            <div class="mt-10 flex space-x-8 text-gray-200">
+                <a href="#" class="hover:text-white">Facebook</a>
+                <a href="#" class="hover:text-white">Twitter</a>
+                <a href="#" class="hover:text-white">Instagram</a>
+            </div>
+        </div>
+
+        <!-- Middle Section -->
+        <div>
+            <h3 class="text-xl font-semibold mb-4">দ্রুত লিঙ্ক</h3>
+            <ul class="space-y-3 text-gray-200">
+                <li><a href="#" class="hover:text-white">সমস্যা রিপোর্ট</a></li>
+                <li><a href="#" class="hover:text-white">নিরাপত্তা সহায়তা</a></li>
+                <li><a href="#" class="hover:text-white">স্বেচ্ছাসেবক দল</a></li>
+                <li><a href="#" class="hover:text-white">CCTV আপডেট</a></li>
+            </ul>
+        </div>
+
+        <!-- Right Section -->
+        <div>
+            <h3 class="text-xl font-semibold mb-4">যোগাযোগ</h3>
+
+            <p class="mb-4">
+                ফোন: +৮৮০ ১১০০-০০০০০
+            </p>
+
+            <p class="mb-4">
+                ইমেইল: info@dinbodol.com
+            </p>
+
+            <h4 class="font-semibold mb-2">ঠিকানা</h4>
+            <p class="text-gray-200">
+                ধানমন্ডি, ঢাকা-১২০৫ <br>
+                বাংলাদেশ
+            </p>
+        </div>
+    </div>
+
+    <!-- Bottom Line -->
+    <div class="max-w-7xl mx-auto mt-12 pt-6 border-t border-gray-600 flex flex-col md:flex-row justify-between text-gray-300 text-sm">
+
+        <p>© ২০২৫ দিনেরবেলের এখনই সময়</p>
+
+        <div class="flex space-x-6 mt-4 md:mt-0">
+            <a href="#" class="hover:text-white">গোপনীয়তা নীতি</a>
+            <a href="#" class="hover:text-white">শর্তাবলী</a>
+            <a href="#" class="hover:text-white">Website Builder</a>
+            <a href="customer_dashboard.html" class="hover:text-white">User</a>
+            <a href="volunteer_dashboard.html" class="hover:text-white">Volunteer</a>
+            <a href="adminprofile.html" class="hover:text-white">Admin</a>
+        </div>
+    </div>
+</footer>
+
+
+<!-- Scroll Script -->
+<script>
+    const header = document.getElementById("mainHeader");
+
+    window.addEventListener("scroll", () => {
+        if (window.scrollY > 20) {
+            header.classList.remove("bg-transparent");
+            header.classList.add("bg-white", "shadow-md");
+        } else {
+            header.classList.remove("bg-white", "shadow-md");
+            header.classList.add("bg-transparent");
+        }
+    });
+</script>
+
+</body>
+</html>

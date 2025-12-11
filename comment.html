@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>দিনবদলের এখনই সময়</title>
+
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* Smooth transition */
+        .header-transition {
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
+        }
+    </style>
+</head>
+
+<body class="bg-gray-50">
+
+<header id="mainHeader"
+        class="fixed top-0 left-0 w-full z-50 header-transition bg-transparent">
+    <div class="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center">
+
+        <!-- Left: Logo + Title -->
+        <div class="flex items-center space-x-3">
+            <div class="w-10 h-10 bg-green-700 rounded-full flex items-center justify-center">
+                <span class="text-white text-xl font-bold">🏠</span>
+            </div>
+            <h1 class="text-xl font-semibold text-gray-900">
+                দিনবদলের এখনই সময়
+            </h1>
+        </div>
+
+        <nav class="flex space-x-8 text-gray-700 font-medium">
+            <a href="home.html" class="hover:text-green-700">হোম</a>
+            <a href="report.html" class="hover:text-green-700">সমস্যা রিপোর্ট</a>
+            <a href="safety.html" class="hover:text-green-700">নিরাপত্তা সহায়তা</a>
+            <a href="post.html" class="hover:text-green-700">হারানো-পাওয়া</a>
+            <a href="volunteer.html" class="hover:text-green-700">স্বেচ্ছাসেবক</a>
+            
+                
+            <a href="javascript:void(0);" onclick="openLoginModal()" 
+                class="text-black no-underline text-[16px]  hover:text-teal-600">
+                লগইন করুন
+            </a>
+                
+            <!-- Login Modal -->
+            <div id="loginModal" 
+                class="hidden fixed inset-0 w-full h-full bg-black/60 flex justify-center items-center z-[9999]">
+                
+                <div class="w-[350px] bg-white p-7 rounded-xl shadow-2xl relative mt-4 flex flex-col gap-3">
+                    
+                    <h2 class="text-center mb-1 text-[26px] font-bold">Welcome Back</h2>
+                    <p class="text-center text-gray-600 mb-1">Sign in to your Account</p>
+
+                    <form method="POST" action="" class="flex flex-col gap-3">
+                        
+                        <input type="text" name="username" placeholder="Email" required
+                            class="w-full p-3 border border-gray-400 rounded-md text-[15px] outline-none" />
+
+                        <input type="password" name="password" placeholder="Password" required
+                            class="w-full p-3 border border-gray-400 rounded-md text-[15px] outline-none" />
+
+                        <div class="flex justify-between items-center my-2">
+                            <label class="flex items-center text-[14px] cursor-pointer">
+                                <input type="checkbox" name="remember_me" class="mr-2 cursor-pointer" />
+                                Remember me
+                            </label>
+                            <a href="#" class="text-[#0D7C7C] text-[14px] no-underline">Forgot password?</a>
+                        </div>
+
+                        <button type="submit" 
+                                class="w-full p-3 bg-[#0D7C7C] text-white rounded-md text-[16px] font-semibold hover:bg-[#055B5B]">
+                            Login
+                        </button>
+                    </form>
+
+                    <!-- Divider -->
+                    <div>
+                        <div class="flex items-center justify-center my-4">
+                            <hr class="flex-1 border-gray-300" />
+                            <span class="mx-3 text-gray-500 text-[14px] font-medium">Or continue with</span>
+                            <hr class="flex-1 border-gray-300" />
+                        </div>
+
+                        <div class="flex justify-center mb-2">
+                            <a href="/accounts/google/login/"
+                            class="flex items-center gap-2 px-6 py-2 border border-gray-300 rounded-md text-[15px] 
+                                    bg-white text-gray-700 shadow-sm cursor-pointer no-underline 
+                                    hover:bg-gray-100 hover:shadow-md transition">
+                                <img src="{% static 'images/g.jpeg' %}" alt="Google" class="w-5 h-5">
+                                Continue with Google
+                            </a>
+                        </div>
+                    </div>
+
+                    <a href="#" class="text-center text-[15px] text-gray-800 no-underline mt-2">Sign Up</a>
+                </div>
+            </div>
+
+
+            <script>
+                document.addEventListener('DOMContentLoaded', function() {
+                    const modal = document.getElementById('loginModal');
+
+                    // Click on backdrop to close
+                    modal.addEventListener('click', function(e) {
+                    if (e.target === modal) {
+                        closeLoginModal();
+                    }
+                    });
+                });
+
+                function openLoginModal() {
+                    const modal = document.getElementById("loginModal");
+                    // Remove hidden and ensure display is cleared
+                    modal.classList.remove("hidden");
+                    modal.style.display = ""; // clear inline style if any
+                }
+
+                function closeLoginModal() {
+                    const modal = document.getElementById("loginModal");
+                    modal.classList.add("hidden");
+                    modal.style.display = ""; // avoid leaving display:none inline
+                }
+
+                // Remember me
+                document.addEventListener('DOMContentLoaded', function() {
+                    const checkbox = document.querySelector('input[name="remember_me"]');
+                    if (!checkbox) return;
+
+                    const rememberMe = localStorage.getItem('rememberMe');
+                    if (rememberMe === 'true') {
+                    checkbox.checked = true;
+                    }
+                    checkbox.addEventListener('change', function() {
+                    localStorage.setItem('rememberMe', this.checked);
+                    });
+                });
+            </script>
+
+        </nav>
+    </div>
+</header>
+  
+  
+<main class="pt-24 pb-16 px-4">
+<section class="max-w-4xl mx-auto bg-white p-5 pt-8 rounded-xl">
+    <!-- Answer count -->
+    <div class="flex items-center gap-2 text-green-700 font-semibold text-lg mb-3">
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none"
+        viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.6">
+        <path stroke-linecap="round" stroke-linejoin="round"
+            d="M7 8h10M7 12h4m1 8l-5-5H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v6" />
+        </svg>
+        উত্তর (2)
+    </div>
+
+    <!-- Answer input -->
+    <div class="flex items-start gap-3">
+        <img src="https://i.pravatar.cc/40" class="w-10 h-10 rounded-full object-cover" />
+
+        <textarea class="w-full border border-gray-300 rounded-xl p-4 focus:outline-none focus:ring-2 focus:ring-blue-400"
+        placeholder="আপনার উত্তর লিখুন..." rows="3"></textarea>
+    </div>
+
+    <div class="flex justify-end mt-3">
+        <button
+        class="px-6 py-2 bg-green-600 text-white rounded-xl hover:bg-green-700 transition">
+        উত্তর দিন
+        </button>
+    </div>
+    <hr class="my-8 border-gray-200" />
+    <div>
+        <h1>রিসেন্ট উত্তরসমূহ</h1>
+        <!-- Answer 1 -->
+        <div class="flex items-start gap-4 mt-6">
+            <img src="https://i.pravatar.cc/80" class="w-12 h-12 rounded-full object-cover" />
+
+            <div class="flex-1 bg-gray-50 p-4 rounded-lg border border-gray-200">
+                <div class="flex justify-between items-center">
+                    <h3 class="font-medium text-gray-800">আনোয়ার হোসেন</h3>
+                    <span class="text-xs text-gray-500">১ ঘন্টা আগে</span>
+                </div>
+                <p class="text-sm text-gray-600 mt-2">
+                    আমি গত সপ্তাহে আমার মোবাইল হারিয়েছিলাম এবং শেষ পর্যন্ত এটি ফিরে পেয়েছি। আমি স্থানীয় পুলিশ স্টেশনে রিপোর্ট করেছি এবং সোশ্যাল মিডিয়ায় শেয়ার করেছি। ধন্যবাদ সবাইকে যারা সাহায্য করেছে!
+                </p>
+            </div>
+        </div>
+        <!-- Answer 2 -->
+        <div class="flex items-start gap-4 mt-6">
+            <img src="https://i.pravatar.cc/80" class="w-12 h-12 rounded-full object-cover" />
+
+            <div class="flex-1 bg-gray-50 p-4 rounded-lg border border-gray-200">
+                <div class="flex justify-between items-center">
+                    <h3 class="font-medium text-gray-800">আনোয়ার হোসেন</h3>
+                    <span class="text-xs text-gray-500">১ ঘন্টা আগে</span>
+                </div>
+                <p class="text-sm text-gray-600 mt-2">
+                    আমি গত সপ্তাহে আমার মোবাইল হারিয়েছিলাম এবং শেষ পর্যন্ত এটি ফিরে পেয়েছি। আমি স্থানীয় পুলিশ স্টেশনে রিপোর্ট করেছি এবং সোশ্যাল মিডিয়ায় শেয়ার করেছি। ধন্যবাদ সবাইকে যারা সাহায্য করেছে!
+                </p>
+            </div>
+        </div>
+        <!-- Answer 3 -->
+        <div class="flex items-start gap-4 mt-6">
+            <img src="https://i.pravatar.cc/80" class="w-12 h-12 rounded-full object-cover" />
+
+            <div class="flex-1 bg-gray-50 p-4 rounded-lg border border-gray-200">
+                <div class="flex justify-between items-center">
+                    <h3 class="font-medium text-gray-800">আনোয়ার হোসেন</h3>
+                    <span class="text-xs text-gray-500">১ ঘন্টা আগে</span>
+                </div>
+                <p class="text-sm text-gray-600 mt-2">
+                    আমি গত সপ্তাহে আমার মোবাইল হারিয়েছিলাম এবং শেষ পর্যন্ত এটি ফিরে পেয়েছি। আমি স্থানীয় পুলিশ স্টেশনে রিপোর্ট করেছি এবং সোশ্যাল মিডিয়ায় শেয়ার করেছি। ধন্যবাদ সবাইকে যারা সাহায্য করেছে!
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+</main>
+
+
+<footer class="bg-green-800 text-white py-16 px-6">
+    <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-12">
+
+        <!-- Left Section -->
+        <div>
+            <h2 class="text-3xl font-bold mb-3">আপডেট পান</h2>
+            <p class="text-gray-200 mb-6">
+                নতুন ফিচার এবং কমিউনিটি আপডেট সম্পর্কে জানুন
+            </p>
+
+            <label class="text-gray-200 text-sm">আপনার ইমেইল</label>
+            <input type="email"
+                   class="w-full bg-transparent border-b border-gray-300 focus:outline-none py-2 text-white mb-4"
+                   placeholder="ইমেইল লিখুন">
+
+            <button class="mt-3 bg-white text-green-800 px-6 py-3 rounded-full font-semibold flex items-center space-x-2">
+                <span>সাবস্ক্রাইব করুন</span>
+                <span>→</span>
+            </button>
+
+            <div class="mt-10 flex space-x-8 text-gray-200">
+                <a href="#" class="hover:text-white">Facebook</a>
+                <a href="#" class="hover:text-white">Twitter</a>
+                <a href="#" class="hover:text-white">Instagram</a>
+            </div>
+        </div>
+
+        <!-- Middle Section -->
+        <div>
+            <h3 class="text-xl font-semibold mb-4">দ্রুত লিঙ্ক</h3>
+            <ul class="space-y-3 text-gray-200">
+                <li><a href="#" class="hover:text-white">সমস্যা রিপোর্ট</a></li>
+                <li><a href="#" class="hover:text-white">নিরাপত্তা সহায়তা</a></li>
+                <li><a href="#" class="hover:text-white">স্বেচ্ছাসেবক দল</a></li>
+                <li><a href="#" class="hover:text-white">CCTV আপডেট</a></li>
+            </ul>
+        </div>
+
+        <!-- Right Section -->
+        <div>
+            <h3 class="text-xl font-semibold mb-4">যোগাযোগ</h3>
+
+            <p class="mb-4">
+                ফোন: +৮৮০ ১১০০-০০০০০
+            </p>
+
+            <p class="mb-4">
+                ইমেইল: info@dinbodol.com
+            </p>
+
+            <h4 class="font-semibold mb-2">ঠিকানা</h4>
+            <p class="text-gray-200">
+                ধানমন্ডি, ঢাকা-১২০৫ <br>
+                বাংলাদেশ
+            </p>
+        </div>
+    </div>
+
+    <!-- Bottom Line -->
+    <div class="max-w-7xl mx-auto mt-12 pt-6 border-t border-gray-600 flex flex-col md:flex-row justify-between text-gray-300 text-sm">
+
+        <p>© ২০২৫ দিনেরবেলের এখনই সময়</p>
+
+        <div class="flex space-x-6 mt-4 md:mt-0">
+            <a href="#" class="hover:text-white">গোপনীয়তা নীতি</a>
+            <a href="#" class="hover:text-white">শর্তাবলী</a>
+            <a href="#" class="hover:text-white">Website Builder</a>
+        </div>
+    </div>
+</footer>
+
+
+<!-- Scroll Script -->
+<script>
+    const header = document.getElementById("mainHeader");
+
+    window.addEventListener("scroll", () => {
+        if (window.scrollY > 20) {
+            header.classList.remove("bg-transparent");
+            header.classList.add("bg-white", "shadow-md");
+        } else {
+            header.classList.remove("bg-white", "shadow-md");
+            header.classList.add("bg-transparent");
+        }
+    });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,1046 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* Smooth transition */
+        .header-transition {
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
+        }
+    </style>
+</head>
+
+<body class="bg-gray-50">
+
+<header id="mainHeader"
+        class="fixed top-0 left-0 w-full z-50 header-transition bg-transparent">
+    <div class="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center">
+
+        <!-- Left: Logo + Title -->
+        <div class="flex items-center space-x-3">
+            <div class="w-10 h-10 bg-green-700 rounded-full flex items-center justify-center">
+                <span class="text-white text-xl font-bold">🏠</span>
+            </div>
+            <h1 class="text-xl font-semibold text-gray-900">
+                দিনবদলের এখনই সময়
+            </h1>
+        </div>
+
+        <nav class="flex space-x-8 text-gray-700 font-medium">
+            <a href="home.html" class="hover:text-green-700">হোম</a>
+            <a href="report.html" class="hover:text-green-700">সমস্যা রিপোর্ট</a>
+            <a href="safety.html" class="hover:text-green-700">নিরাপত্তা সহায়তা</a>
+            <a href="post.html" class="hover:text-green-700">হারানো-পাওয়া</a>
+            <a href="volunteer.html" class="hover:text-green-700">স্বেচ্ছাসেবক</a>
+            <a href="#" class="hover:text-teal-600 mr-16">লগ আউট</a>
+        </nav>
+    </div>
+</header>
+
+
+<section class="bg-white pb-8 pt-25 ">
+  <div class="mx-auto bg-white rounded-lg shadow-sm p-6" style="max-width: 85rem;">
+
+    <h1 class="text-2xl font-bold text-gray-800 mb-2">আমার ড্যাশবোর্ড</h1>
+    <p class="text-gray-600 mb-6">সম্পূর্ণ সিস্টেম পরিচালনা এবং পর্যবেক্ষণ</p>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+
+      <div class="rounded-lg p-4 flex flex-col items-start transition-shadow duration-300 hover:shadow-lg">
+          <div class="bg-blue-500 text-white p-2 rounded-md mb-2">
+              <!-- icon -->
+              <span class="text-white text-xl">
+                  <i class="fa-solid fa-file-lines"></i>
+              </span>
+          </div>
+          <h2 class="text-lg font-semibold text-blue-800">মোট রিপোর্ট</h2>
+          <p class="text-blue-700 text-xl font-bold">১,২৪৫ </p>
+      </div>
+
+      <div class="rounded-lg p-4 flex flex-col items-start transition-shadow duration-300 hover:shadow-lg">
+          <div class="bg-green-500 text-white p-2 rounded-md mb-2">
+              <!-- icon -->
+              <span class="text-white text-xl">
+                <i class="fa-solid fa-check-circle"></i>
+              </span>
+          </div>
+          <h2 class="text-lg font-semibold text-green-800">সক্রিয় স্বেচ্ছাসেবক</h2>
+          <p class="text-green-700 text-xl font-bold">৮৯ </p>
+      </div>
+      
+
+      <div class="rounded-lg p-4 flex flex-col items-start transition-shadow duration-300 hover:shadow-lg">
+          <div class="bg-[#f59e0b] text-white p-2 rounded-md mb-2">
+              <!-- icon -->
+              <span class="text-white text-xl">
+                <i class="fa-solid fa-gears"></i>
+              </span>
+          </div>
+          <h2 class="text-lg font-semibold text-orange-800">নিরাপত্তা অভিযোগ</h2>
+          <p class="text-orange-700 text-xl font-bold">৩৪ </p>
+      </div>      
+      
+
+      <div class="rounded-lg p-4 flex flex-col items-start transition-shadow duration-300 hover:shadow-lg">
+          <div class="bg-[#ef4444] text-white p-2 rounded-md mb-2">
+              <!-- icon -->
+              <span class="text-white text-xl">
+                <i class="fa-solid fa-clock"></i>
+              </span>
+          </div>
+          <h2 class="text-lg font-semibold text-red-800">হারানো-পাওয়া</h2>
+          <p class="text-red-700 text-xl font-bold">১৫৬ </p>
+      </div>
+      
+    </div>
+  </div>
+</section>
+
+<section class="bg-white pb-8 pt-8 mx-auto bg-white rounded-lg shadow-md p-6" style="max-width: 85rem;">
+    <!-- Tabs -->
+    <div class="flex gap-6 border-b pb-3">
+        <button id="tab-report" class="tab-btn active-tab">সংক্ষিপ্ত বিবরণ</button>
+        <button id="tab-lost" class="tab-btn">সমস্যা রিপোর্ট</button>
+        <button id="tab-forum" class="tab-btn">স্বেচ্ছাসেবক</button>
+        <button id="tab-safety" class="tab-btn">নিরাপত্তা</button>
+        <button id="tab-lostfound" class="tab-btn">হারানো-পাওয়া</button>
+        <button id="tab-profile" class="tab-btn">প্রোফাইল</button>
+    </div>
+
+    <!-- Content Divs -->
+    <div id="content-report" class="tab-content mt-6">
+        <div class="w-full bg-white p-6">
+          <h1 class="text-2xl font-bold mb-6">সম্প্রতিক কার্যক্রম</h1>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+              <!-- Left Card -->
+              <div class="bg-white border border-gray-300 rounded-xl p-5 shadow-sm">
+                  <div class="flex items-center gap-2 mb-4">
+                      <span class="text-green-600 text-xl">📗</span>
+                      <h2 class="text-xl font-semibold">সম্প্রতিক রিপোর্ট</h2>
+                  </div>
+
+                  <!-- Item 1 -->
+                  <a href="{% url 'report' %}">
+                    <div class="border border-gray-300 rounded-lg p-4 flex justify-between items-center mb-3">
+                        <div>
+                            <p class="font-semibold">মিরপুর ১০</p>
+                            <p class="text-gray-600 text-sm">রাস্তা় মেরামত প্রকল্প</p>
+                        </div>
+                        <div class="text-center">
+                            <span class="bg-yellow-100 text-yellow-700 px-3 py-1 rounded-full text-sm font-medium">পেন্ডিং</span>
+                            <p class="text-gray-500 text-xs mt-1">২ ঘন্টা আগে</p>
+                        </div>
+                    </div>
+                  </a>
+
+                  <!-- Item 2 -->
+                  <div class="border border-gray-300 rounded-lg p-4 flex justify-between items-center mb-3">
+                      <div>
+                          <p class="font-semibold">ধানমন্ডি</p>
+                          <p class="text-gray-600 text-sm">বিদ্যুত সমস্যা</p>
+                      </div>
+                      <div class="text-center">
+                          <span class="bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-sm font-medium">প্রক্রিয়াধীন</span>
+                          <p class="text-gray-500 text-xs mt-1">৫ ঘন্টা আগে</p>
+                      </div>
+                  </div>
+
+                  <!-- Item 3 -->
+                  <div class="border border-gray-300 rounded-lg p-4 flex justify-between items-center">
+                      <div>
+                          <p class="font-semibold">গুলশান</p>
+                          <p class="text-gray-600 text-sm">পানির সমস্যা</p>
+                      </div>
+                      <div class="text-center">
+                          <span class="bg-green-100 text-green-700 px-3 py-1 rounded-full text-sm font-medium">সমাধান হয়েছে</span>
+                          <p class="text-gray-500 text-xs mt-1">১ দিন আগে</p>
+                      </div>
+                  </div>
+              </div>
+
+              <!-- Right Card -->
+              <div class="bg-white border border-gray-300 rounded-xl p-5 shadow-sm">
+                  <div class="flex items-center gap-2 mb-4">
+                      <span class="text-orange-500 text-xl">⏰</span>
+                      <h2 class="text-xl font-semibold">অনুমোদনের অপেক্ষায়</h2>
+                  </div>
+
+                  <!-- Request 1 -->
+                  <div class="border border-gray-300 rounded-lg p-4 flex justify-between items-center mb-3">
+                      <div>
+                          <p class="font-semibold">রহিয় আহমেদ</p>
+                          <p class="text-gray-600 text-sm">স্বেচ্ছাসেবক আবেদন</p>
+                      </div>
+                      <div class="flex gap-2">
+                          <button class="bg-green-500 text-white px-4 py-1 rounded-lg">অনুমোদন</button>
+                          <button class="bg-red-500 text-white px-4 py-1 rounded-lg">বাতিল</button>
+                      </div>
+                  </div>
+
+                  <!-- Request 2 -->
+                  <div class="border border-gray-300 rounded-lg p-4 flex justify-between items-center mb-3">
+                      <div>
+                          <p class="font-semibold">সালমা খাতুন</p>
+                          <p class="text-gray-600 text-sm">নিরাপত্তা অভিযোগ</p>
+                      </div>
+                      <div class="flex gap-2">
+                          <button class="bg-green-500 text-white px-4 py-1 rounded-lg">অনুমোদন</button>
+                          <button class="bg-red-500 text-white px-4 py-1 rounded-lg">বাতিল</button>
+                      </div>
+                  </div>
+
+                  <!-- Request 3 -->
+                  <div class="border border-gray-300 rounded-lg p-4 flex justify-between items-center">
+                      <div>
+                          <p class="font-semibold">করিম মিয়া</p>
+                          <p class="text-gray-600 text-sm">হারানো জিনিস পোস্ট</p>
+                      </div>
+                      <div class="flex gap-2">
+                          <button class="bg-green-500 text-white px-4 py-1 rounded-lg">অনুমোদন</button>
+                          <button class="bg-red-500 text-white px-4 py-1 rounded-lg">বাতিল</button>
+                      </div>
+                  </div>
+              </div>
+
+          </div>
+      </div>
+
+    </div>
+
+
+    <div id="content-lost" class="tab-content mt-6 hidden">
+        <div class="p-8 bg-white w-full">
+          <h1 class="text-3xl font-bold mb-6">সমস্যা রিপোর্ট পরিচালনা</h1>
+
+          <!-- Filter Buttons -->
+          <div class="flex gap-3 mb-6">
+              <button class="bg-green-600 text-white px-6 py-2 rounded-lg font-medium">সব</button>
+              <button class="bg-gray-100 text-gray-700 px-6 py-2 rounded-lg font-medium">পেন্ডিং</button>
+              <button class="bg-gray-100 text-gray-700 px-6 py-2 rounded-lg font-medium">প্রক্রিয়াধীন</button>
+              <button class="bg-gray-100 text-gray-700 px-6 py-2 rounded-lg font-medium">সমাধান হয়েছে</button>
+          </div>
+
+          <!-- Table -->
+          <div class="overflow-x-auto">
+              <table class="w-full border-collapse">
+                  <thead>
+                      <tr class="bg-gray-50 text-left">
+                          <th class="p-3 font-semibold">রিপোর্ট ID</th>
+                          <th class="p-3 font-semibold">এলাকা</th>
+                          <th class="p-3 font-semibold">ক্যাটাগরি</th>
+                          <th class="p-3 font-semibold">সমস্যা</th>
+                          <th class="p-3 font-semibold">রিপোর্টার</th>
+                          <th class="p-3 font-semibold">স্ট্যাটাস</th>
+                          <th class="p-3 font-semibold">তারিখ</th>
+                          <th class="p-3 font-semibold">অ্যাকশন</th>
+                      </tr>
+                  </thead>
+
+                  <tbody class="text-gray-700">
+
+                      <!-- Row 1 -->
+                      <tr class="border-b">
+                          <td class="p-3">R001</td>
+                          <td class="p-3">মিরপুর ১০</td>
+                          <td class="p-3">
+                              <span class="bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-sm">রাস্তা</span>
+                          </td>
+                          <td class="p-3">রাস্তা় মেরামত প্রকল্প</td>
+                          <td class="p-3">আব্দুল করিম</td>
+                          <td class="p-3">
+                              <span class="bg-yellow-100 text-yellow-700 px-3 py-1 rounded-full text-sm">পেন্ডিং</span>
+                          </td>
+                          <td class="p-3">২০২৪-০১-১৬</td>
+                          <td class="p-3 flex items-center gap-3">
+                              <a href="report2.html"><span class="text-blue-600 text-xl cursor-pointer">👁️</span></a>
+                              <span class="text-green-600 text-xl cursor-pointer">✏️</span>
+                              <span class="text-red-600 text-xl cursor-pointer">🗑️</span>
+                          </td>
+                      </tr>
+
+                      <!-- Row 2 -->
+                      <tr class="border-b">
+                          <td class="p-3">R002</td>
+                          <td class="p-3">ধানমন্ডি</td>
+                          <td class="p-3">
+                              <span class="bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-sm">বিদ্যুৎ</span>
+                          </td>
+                          <td class="p-3">ঘন ঘন লোডশেডিং</td>
+                          <td class="p-3">ফাতেমা বেগম</td>
+                          <td class="p-3">
+                              <span class="bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-sm">প্রক্রিয়াধীন</span>
+                          </td>
+                          <td class="p-3">২০২৪-০১-১৪</td>
+                          <td class="p-3 flex items-center gap-3">
+                              <span class="text-blue-600 text-xl cursor-pointer">👁️</span>
+                              <span class="text-green-600 text-xl cursor-pointer">✏️</span>
+                              <span class="text-red-600 text-xl cursor-pointer">🗑️</span>
+                          </td>
+                      </tr>
+
+                      <!-- Row 3 -->
+                      <tr class="border-b">
+                          <td class="p-3">R003</td>
+                          <td class="p-3">গুলশান</td>
+                          <td class="p-3">
+                              <span class="bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-sm">পানি</span>
+                          </td>
+                          <td class="p-3">পানির চাপ কম</td>
+                          <td class="p-3">রহিম উদ্দিন</td>
+                          <td class="p-3">
+                              <span class="bg-green-100 text-green-700 px-3 py-1 rounded-full text-sm">সমাধান হয়েছে</span>
+                          </td>
+                          <td class="p-3">২০২৪-০১-১৫</td>
+                          <td class="p-3 flex items-center gap-3">
+                              <span class="text-blue-600 text-xl cursor-pointer">👁️</span>
+                              <span class="text-green-600 text-xl cursor-pointer">✏️</span>
+                              <span class="text-red-600 text-xl cursor-pointer">🗑️</span>
+                          </td>
+                      </tr>
+
+                      <!-- Row 4 -->
+                      <tr class="border-b">
+                          <td class="p-3">R004</td>
+                          <td class="p-3">বনানী</td>
+                          <td class="p-3">
+                              <span class="bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-sm">রাস্তা</span>
+                          </td>
+                          <td class="p-3">রাস্তায় গর্ত</td>
+                          <td class="p-3">সালমা খাতুন</td>
+                          <td class="p-3">
+                              <span class="bg-yellow-100 text-yellow-700 px-3 py-1 rounded-full text-sm">পেন্ডিং</span>
+                          </td>
+                          <td class="p-3">২০২৪-০১-১৩</td>
+                          <td class="p-3 flex items-center gap-3">
+                              <span class="text-blue-600 text-xl cursor-pointer">👁️</span>
+                              <span class="text-green-600 text-xl cursor-pointer">✏️</span>
+                              <span class="text-red-600 text-xl cursor-pointer">🗑️</span>
+                          </td>
+                      </tr>
+
+                      <!-- Row 5 -->
+                      <tr class="border-b">
+                          <td class="p-3">R005</td>
+                          <td class="p-3">মোহাম্মদপুর</td>
+                          <td class="p-3">
+                              <span class="bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-sm">বিদ্যুৎ</span>
+                          </td>
+                          <td class="p-3">স্ট্রিট লাইট নষ্ট</td>
+                          <td class="p-3">জামাল হোসেন</td>
+                          <td class="p-3">
+                              <span class="bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-sm">প্রক্রিয়াধীন</span>
+                          </td>
+                          <td class="p-3">২০২৪-০১-১৪</td>
+                          <td class="p-3 flex items-center gap-3">
+                              <span class="text-blue-600 text-xl cursor-pointer">👁️</span>
+                              <span class="text-green-600 text-xl cursor-pointer">✏️</span>
+                              <span class="text-red-600 text-xl cursor-pointer">🗑️</span>
+                          </td>
+                      </tr>
+
+                      <!-- Row 6 -->
+                      <tr class="border-b">
+                          <td class="p-3">R006</td>
+                          <td class="p-3">উত্তরা</td>
+                          <td class="p-3">
+                              <span class="bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-sm">পানি</span>
+                          </td>
+                          <td class="p-3">পানি সরবরাহ বন্ধ</td>
+                          <td class="p-3">নাসরিন আক্তার</td>
+                          <td class="p-3">
+                              <span class="bg-green-100 text-green-700 px-3 py-1 rounded-full text-sm">সমাধান হয়েছে</span>
+                          </td>
+                          <td class="p-3">২০২৪-০১-১২</td>
+                          <td class="p-3 flex items-center gap-3">
+                              <span class="text-blue-600 text-xl cursor-pointer">👁️</span>
+                              <span class="text-green-600 text-xl cursor-pointer">✏️</span>
+                              <span class="text-red-600 text-xl cursor-pointer">🗑️</span>
+                          </td>
+                      </tr>
+
+                  </tbody>
+              </table>
+          </div>
+      </div>
+
+        
+    </div>
+
+    <div id="content-forum" class="tab-content mt-6 hidden">
+        <div class="p-8 bg-white w-full">
+
+          <h1 class="text-3xl font-bold mb-6">স্বেচ্ছাসেবক পরিচালনা</h1>
+
+          <!-- Filter Buttons -->
+          <div class="flex gap-3 mb-6">
+              <button class="bg-green-600 text-white px-6 py-2 rounded-lg font-medium">সব</button>
+              <button class="bg-gray-100 text-gray-700 px-6 py-2 rounded-lg font-medium">সক্রিয়</button>
+              <button class="bg-gray-100 text-gray-700 px-6 py-2 rounded-lg font-medium">পেন্ডিং</button>
+          </div>
+
+          <!-- Table -->
+          <div class="overflow-x-auto">
+              <table class="w-full border-collapse">
+                  <thead>
+                      <tr class="bg-gray-50 text-left">
+                          <th class="p-3 font-semibold">ID</th>
+                          <th class="p-3 font-semibold">নাম</th>
+                          <th class="p-3 font-semibold">এলাকা</th>
+                          <th class="p-3 font-semibold">ফোন</th>
+                          <th class="p-3 font-semibold">সম্পন্ন কাজ</th>
+                          <th class="p-3 font-semibold">রেটিং</th>
+                          <th class="p-3 font-semibold">স্ট্যাটাস</th>
+                          <th class="p-3 font-semibold">অ্যাকশন</th>
+                      </tr>
+                  </thead>
+
+                  <tbody class="text-gray-700">
+
+                      <!-- Row 1 -->
+                      <tr class="border-b">
+                          <td class="p-3">V001</td>
+                          <td class="p-3">রহিম আহমেদ</td>
+                          <td class="p-3">মিরপুর</td>
+                          <td class="p-3">০১৭১২৩৪৫৬৭৮</td>
+                          <td class="p-3">45</td>
+                          <td class="p-3 flex items-center gap-1">
+                              ⭐ <span>4.8</span>
+                          </td>
+                          <td class="p-3">
+                              <span class="bg-green-100 text-green-700 px-3 py-1 rounded-full text-sm">সক্রিয়</span>
+                          </td>
+                          <td class="p-3 flex items-center gap-3">
+                              <span class="text-blue-600 text-xl cursor-pointer">👁️</span>
+                              <span class="text-red-600 text-xl cursor-pointer">✖</span>
+                          </td>
+                      </tr>
+
+                      <!-- Row 2 -->
+                      <tr class="border-b">
+                          <td class="p-3">V002</td>
+                          <td class="p-3">সালমা খাতুন</td>
+                          <td class="p-3">ধানমন্ডি</td>
+                          <td class="p-3">০১৮১২৩৪৫৬৭৮</td>
+                          <td class="p-3">38</td>
+                          <td class="p-3 flex items-center gap-1">
+                              ⭐ <span>4.9</span>
+                          </td>
+                          <td class="p-3">
+                              <span class="bg-green-100 text-green-700 px-3 py-1 rounded-full text-sm">সক্রিয়</span>
+                          </td>
+                          <td class="p-3 flex items-center gap-3">
+                              <span class="text-blue-600 text-xl cursor-pointer">👁️</span>
+                              <span class="text-red-600 text-xl cursor-pointer">✖</span>
+                          </td>
+                      </tr>
+
+                      <!-- Row 3 -->
+                      <tr class="border-b">
+                          <td class="p-3">V003</td>
+                          <td class="p-3">করিম মিয়া</td>
+                          <td class="p-3">গুলশান</td>
+                          <td class="p-3">০১৯১২৩৪৫৬৭৮</td>
+                          <td class="p-3">52</td>
+                          <td class="p-3 flex items-center gap-1">
+                              ⭐ <span>4.7</span>
+                          </td>
+                          <td class="p-3">
+                              <span class="bg-green-100 text-green-700 px-3 py-1 rounded-full text-sm">সক্রিয়</span>
+                          </td>
+                          <td class="p-3 flex items-center gap-3">
+                              <span class="text-blue-600 text-xl cursor-pointer">👁️</span>
+                              <span class="text-red-600 text-xl cursor-pointer">✖</span>
+                          </td>
+                      </tr>
+
+                      <!-- Row 4 -->
+                      <tr class="border-b">
+                          <td class="p-3">V004</td>
+                          <td class="p-3">নাসরিন আক্তার</td>
+                          <td class="p-3">বনানী</td>
+                          <td class="p-3">০১৬১২৩৪৫৬৭৮</td>
+                          <td class="p-3">0</td>
+                          <td class="p-3">-</td>
+                          <td class="p-3">
+                              <span class="bg-yellow-100 text-yellow-700 px-3 py-1 rounded-full text-sm">পেন্ডিং</span>
+                          </td>
+                          <td class="p-3 flex items-center gap-3">
+                              <button class="bg-green-600 text-white px-4 py-1 rounded-md">অনুমোদন</button>
+                              <button class="bg-red-600 text-white px-4 py-1 rounded-md">বাতিল</button>
+                          </td>
+                      </tr>
+
+                      <!-- Row 5 -->
+                      <tr class="border-b">
+                          <td class="p-3">V005</td>
+                          <td class="p-3">জামাল হোসেন</td>
+                          <td class="p-3">মোহাম্মদপুর</td>
+                          <td class="p-3">০১৩১২৩৪৫৬৭৮</td>
+                          <td class="p-3">29</td>
+                          <td class="p-3 flex items-center gap-1">
+                              ⭐ <span>4.6</span>
+                          </td>
+                          <td class="p-3">
+                              <span class="bg-green-100 text-green-700 px-3 py-1 rounded-full text-sm">সক্রিয়</span>
+                          </td>
+                          <td class="p-3 flex items-center gap-3">
+                              <span class="text-blue-600 text-xl cursor-pointer">👁️</span>
+                              <span class="text-red-600 text-xl cursor-pointer">✖</span>
+                          </td>
+                      </tr>
+
+                      <!-- Row 6 -->
+                      <tr class="border-b">
+                          <td class="p-3">V006</td>
+                          <td class="p-3">ফাতেমা বেগম</td>
+                          <td class="p-3">উত্তরা</td>
+                          <td class="p-3">০১৬১২৩৪৫৬৭৮</td>
+                          <td class="p-3">0</td>
+                          <td class="p-3">-</td>
+                          <td class="p-3">
+                              <span class="bg-yellow-100 text-yellow-700 px-3 py-1 rounded-full text-sm">পেন্ডিং</span>
+                          </td>
+                          <td class="p-3 flex items-center gap-3">
+                              <button class="bg-green-600 text-white px-4 py-1 rounded-md">অনুমোদন</button>
+                              <button class="bg-red-600 text-white px-4 py-1 rounded-md">বাতিল</button>
+                          </td>
+                      </tr>
+
+                  </tbody>
+              </table>
+          </div>
+      </div>
+
+    </div>
+
+    <div id="content-safety" class="tab-content mt-6 hidden">
+        <section class="p-6 bg-white rounded-xl shadow-md">
+          <h1 class="text-3xl font-bold mb-6">নিরাপত্তা অভিযোগ পরিচালনা</h1>
+          <div class="flex items-center gap-4 mb-6">
+              <button class="px-6 py-2 bg-green-600 text-white rounded-lg">সব</button>
+              <button class="px-6 py-2 bg-gray-100 text-gray-700 rounded-lg">পেন্ডিং</button>
+              <button class="px-6 py-2 bg-gray-100 text-gray-700 rounded-lg">প্রক্রিয়াধীন</button>
+              <button class="px-6 py-2 bg-gray-100 text-gray-700 rounded-lg">সমাধান হয়েছে</button>
+          </div>
+
+          <div class="overflow-x-auto">
+              <table class="w-full table-auto border-collapse">
+                  <thead>
+                      <tr class="text-left border-b">
+                          <th class="p-4">ID</th>
+                          <th class="p-4">রিপোর্টার</th>
+                          <th class="p-4">এলাকা</th>
+                          <th class="p-4">ধরন</th>
+                          <th class="p-4">বিবরণ</th>
+                          <th class="p-4">অগ্রাধিকর</th>
+                          <th class="p-4">স্ট্যাটাস</th>
+                          <th class="p-4">তারিখ</th>
+                          <th class="p-4">অ্যাকশন</th>
+                      </tr>
+                  </thead>
+
+                  <tbody class="text-gray-700">
+                      <!-- Row 1 -->
+                      <tr class="border-b">
+                          <td class="p-4">S001</td>
+                          <td class="p-4">সালমা খাতুন</td>
+                          <td class="p-4">মিরপুর ১০</td>
+                          <td class="p-4">
+                              <span class="bg-red-100 text-red-600 px-3 py-1 rounded-full text-sm">
+                                  ঝুঁকিপূর্ণ
+                              </span>
+                          </td>
+                          <td class="p-4">রাস্তার হয়রানির শিকার</td>
+                          <td class="p-4">
+                              <span class="bg-red-100 text-red-500 px-3 py-1 rounded-full text-sm">জরুরি</span>
+                          </td>
+                          <td class="p-4">
+                              <span class="bg-yellow-100 text-yellow-600 px-3 py-1 rounded-full text-sm">পেন্ডিং</span>
+                          </td>
+                          <td class="p-4">২০২৪-০১-১৫</td>
+                          <td class="p-4 flex gap-3">
+                              <span class="text-blue-500 cursor-pointer">👁️</span>
+                              <span class="text-green-600 cursor-pointer">✏️</span>
+                          </td>
+                      </tr>
+
+                      <!-- Row 2 -->
+                      <tr class="border-b">
+                          <td class="p-4">S002</td>
+                          <td class="p-4">নাসরিন আক্তার</td>
+                          <td class="p-4">ধানমন্ডি</td>
+                          <td class="p-4">
+                              <span class="bg-pink-100 text-pink-600 px-3 py-1 rounded-full text-sm">
+                                  অনিরাপদ এলাকা
+                              </span>
+                          </td>
+                          <td class="p-4">রাতে আলো নেই</td>
+                          <td class="p-4">
+                              <span class="bg-yellow-100 text-yellow-600 px-3 py-1 rounded-full text-sm">মাঝারি</span>
+                          </td>
+                          <td class="p-4">
+                              <span class="bg-blue-100 text-blue-600 px-3 py-1 rounded-full text-sm">প্রক্রিয়াধীন</span>
+                          </td>
+                          <td class="p-4">২০২৪-০১-১৪</td>
+                          <td class="p-4 flex gap-3">
+                              <span class="text-blue-500 cursor-pointer">👁️</span>
+                              <span class="text-green-600 cursor-pointer">✏️</span>
+                          </td>
+                      </tr>
+
+                      <!-- Row 3 -->
+                      <tr class="border-b">
+                          <td class="p-4">S003</td>
+                          <td class="p-4">ফাতেমা বেগম</td>
+                          <td class="p-4">গুলশান</td>
+                          <td class="p-4">
+                              <span class="bg-red-100 text-red-600 px-3 py-1 rounded-full text-sm">
+                                  সন্দেহজনক কার্যকলাপ
+                              </span>
+                          </td>
+                          <td class="p-4">অপরিচিত ব্যক্তি ঘোরাফেরা</td>
+                          <td class="p-4">
+                              <span class="bg-orange-100 text-orange-600 px-3 py-1 rounded-full text-sm">উচ্চ</span>
+                          </td>
+                          <td class="p-4">
+                              <span class="bg-green-100 text-green-600 px-3 py-1 rounded-full text-sm">সমাধান হয়েছে</span>
+                          </td>
+                          <td class="p-4">২০২৪-০১-১৩</td>
+                          <td class="p-4 flex gap-3">
+                              <span class="text-blue-500 cursor-pointer">👁️</span>
+                              <span class="text-green-600 cursor-pointer">✏️</span>
+                          </td>
+                      </tr>
+
+                      <!-- Row 4 -->
+                      <tr class="border-b">
+                          <td class="p-4">S004</td>
+                          <td class="p-4">রুমানা পারভীন</td>
+                          <td class="p-4">বনানী</td>
+                          <td class="p-4">
+                              <span class="bg-red-100 text-red-600 px-3 py-1 rounded-full text-sm">
+                                  ঝুঁকিপূর্ণ
+                              </span>
+                          </td>
+                          <td class="p-4">কর্মস্থলে হয়রানি</td>
+                          <td class="p-4">
+                              <span class="bg-red-100 text-red-500 px-3 py-1 rounded-full text-sm">জরুরি</span>
+                          </td>
+                          <td class="p-4">
+                              <span class="bg-yellow-100 text-yellow-600 px-3 py-1 rounded-full text-sm">পেন্ডিং</span>
+                          </td>
+                          <td class="p-4">২০২৪-০১-১২</td>
+                          <td class="p-4 flex gap-3">
+                              <span class="text-blue-500 cursor-pointer">👁️</span>
+                              <span class="text-green-600 cursor-pointer">✏️</span>
+                          </td>
+                      </tr>
+
+                      <!-- Row 5 -->
+                      <tr>
+                          <td class="p-4">S005</td>
+                          <td class="p-4">শাহিনা আক্তার</td>
+                          <td class="p-4">মোহাম্মদপুর</td>
+                          <td class="p-4">
+                              <span class="bg-pink-100 text-pink-600 px-3 py-1 rounded-full text-sm">
+                                  অনিরাপদ এলাকা
+                              </span>
+                          </td>
+                          <td class="p-4">ভাঙা রাস্তা</td>
+                          <td class="p-4">
+                              <span class="bg-yellow-100 text-yellow-600 px-3 py-1 rounded-full text-sm">মাঝারি</span>
+                          </td>
+                          <td class="p-4">
+                              <span class="bg-blue-100 text-blue-600 px-3 py-1 rounded-full text-sm">প্রক্রিয়াধীন</span>
+                          </td>
+                          <td class="p-4">২০২৪-০১-১৪</td>
+                          <td class="p-4 flex gap-3">
+                              <span class="text-blue-500 cursor-pointer">👁️</span>
+                              <span class="text-green-600 cursor-pointer">✏️</span>
+                          </td>
+                      </tr>
+
+                  </tbody>
+              </table>
+          </div>
+      </section>
+
+    </div>
+
+    <div id="content-lostfound" class="tab-content mt-6 hidden">
+        <section class="p-6 bg-white rounded-xl shadow-md">
+          <h2 class="text-3xl font-bold mb-6">হারানো–পাওয়া পরিচালনা</h2>
+
+          <!-- Filters -->
+          <div class="flex items-center gap-4 mb-6">
+              <button class="px-6 py-2 bg-green-600 text-white rounded-lg">সব</button>
+              <button class="px-6 py-2 bg-gray-100 text-gray-700 rounded-lg">পেন্ডিং</button>
+              <button class="px-6 py-2 bg-gray-100 text-gray-700 rounded-lg">অনুমোদিত</button>
+          </div>
+
+          <div class="overflow-x-auto">
+              <table class="w-full table-auto border-collapse">
+                  <thead>
+                      <tr class="text-left border-b">
+                          <th class="p-4">ID</th>
+                          <th class="p-4">ধরন</th>
+                          <th class="p-4">জিনিস</th>
+                          <th class="p-4">ক্যাটাগরি</th>
+                          <th class="p-4">পোস্টকারী</th>
+                          <th class="p-4">এলাকা</th>
+                          <th class="p-4">স্ট্যাটাস</th>
+                          <th class="p-4">তারিখ</th>
+                          <th class="p-4">অ্যাকশন</th>
+                      </tr>
+                  </thead>
+
+                  <tbody class="text-gray-700">
+
+                      <!-- Row 1 -->
+                      <tr class="border-b">
+                          <td class="p-4">L001</td>
+                          <td class="p-4">
+                              <span class="bg-red-100 text-red-600 px-3 py-1 rounded-full text-sm">হারানো</span>
+                          </td>
+                          <td class="p-4">মোবাইল ফোন</td>
+                          <td class="p-4">
+                              <span class="bg-blue-100 text-blue-600 px-3 py-1 rounded-full text-sm">ইলেকট্রনিক্স</span>
+                          </td>
+                          <td class="p-4">করিম মিয়া</td>
+                          <td class="p-4">মিরপুর</td>
+                          <td class="p-4">
+                              <span class="bg-yellow-100 text-yellow-700 px-3 py-1 rounded-full text-sm">পেন্ডিং</span>
+                          </td>
+                          <td class="p-4">২০২৪-০১-১৫</td>
+                          <td class="p-4 flex gap-3">
+                              <button class="bg-green-500 text-white px-4 py-1 rounded-lg text-sm">অনুমোদন</button>
+                              <button class="bg-red-500 text-white px-4 py-1 rounded-lg text-sm">বাতিল</button>
+                          </td>
+                      </tr>
+
+                      <!-- Row 2 -->
+                      <tr class="border-b">
+                          <td class="p-4">L002</td>
+                          <td class="p-4">
+                              <span class="bg-green-100 text-green-600 px-3 py-1 rounded-full text-sm">পাওয়া</span>
+                          </td>
+                          <td class="p-4">মানিব্যাগ</td>
+                          <td class="p-4">
+                              <span class="bg-blue-100 text-blue-600 px-3 py-1 rounded-full text-sm">ব্যক্তিগত</span>
+                          </td>
+                          <td class="p-4">রহিম আহমেদ</td>
+                          <td class="p-4">ধানমন্ডি</td>
+                          <td class="p-4">
+                              <span class="bg-green-100 text-green-700 px-3 py-1 rounded-full text-sm">অনুমোদিত</span>
+                          </td>
+                          <td class="p-4">২০২৪-০১-১৪</td>
+                          <td class="p-4 flex gap-3">
+                              <span class="cursor-pointer text-blue-600">👁️</span>
+                              <span class="cursor-pointer text-red-500">🗑️</span>
+                          </td>
+                      </tr>
+
+                      <!-- Row 3 -->
+                      <tr class="border-b">
+                          <td class="p-4">L003</td>
+                          <td class="p-4">
+                              <span class="bg-red-100 text-red-600 px-3 py-1 rounded-full text-sm">হারানো</span>
+                          </td>
+                          <td class="p-4">চাবির গোছা</td>
+                          <td class="p-4">
+                              <span class="bg-blue-100 text-blue-600 px-3 py-1 rounded-full text-sm">ব্যক্তিগত</span>
+                          </td>
+                          <td class="p-4">সালমা খাতুন</td>
+                          <td class="p-4">গুলশান</td>
+                          <td class="p-4">
+                              <span class="bg-green-100 text-green-700 px-3 py-1 rounded-full text-sm">অনুমোদিত</span>
+                          </td>
+                          <td class="p-4">২০২৪-০১-১৩</td>
+                          <td class="p-4 flex gap-3">
+                              <span class="cursor-pointer text-blue-600">👁️</span>
+                              <span class="cursor-pointer text-red-500">🗑️</span>
+                          </td>
+                      </tr>
+
+                      <!-- Row 4 -->
+                      <tr class="border-b">
+                          <td class="p-4">L004</td>
+                          <td class="p-4">
+                              <span class="bg-green-100 text-green-600 px-3 py-1 rounded-full text-sm">পাওয়া</span>
+                          </td>
+                          <td class="p-4">ল্যাপটপ ব্যাগ</td>
+                          <td class="p-4">
+                              <span class="bg-blue-100 text-blue-600 px-3 py-1 rounded-full text-sm">ইলেকট্রনিক্স</span>
+                          </td>
+                          <td class="p-4">জামাল হোসেন</td>
+                          <td class="p-4">বনানী</td>
+                          <td class="p-4">
+                              <span class="bg-yellow-100 text-yellow-700 px-3 py-1 rounded-full text-sm">পেন্ডিং</span>
+                          </td>
+                          <td class="p-4">২০২৪-০১-১৪</td>
+                          <td class="p-4 flex gap-3">
+                              <button class="bg-green-500 text-white px-4 py-1 rounded-lg text-sm">অনুমোদন</button>
+                              <button class="bg-red-500 text-white px-4 py-1 rounded-lg text-sm">বাতিল</button>
+                          </td>
+                      </tr>
+
+                      <!-- Row 5 -->
+                      <tr class="border-b">
+                          <td class="p-4">L005</td>
+                          <td class="p-4">
+                              <span class="bg-red-100 text-red-600 px-3 py-1 rounded-full text-sm">হারানো</span>
+                          </td>
+                          <td class="p-4">পরিচয়পত্র</td>
+                          <td class="p-4">
+                              <span class="bg-blue-100 text-blue-600 px-3 py-1 rounded-full text-sm">ডকুমেন্ট</span>
+                          </td>
+                          <td class="p-4">নাসরিন আক্তার</td>
+                          <td class="p-4">মোহাম্মদপুর</td>
+                          <td class="p-4">
+                              <span class="bg-green-100 text-green-700 px-3 py-1 rounded-full text-sm">অনুমোদিত</span>
+                          </td>
+                          <td class="p-4">২০২৪-০১-১৪</td>
+                          <td class="p-4 flex gap-3">
+                              <span class="cursor-pointer text-blue-600">👁️</span>
+                              <span class="cursor-pointer text-red-500">🗑️</span>
+                          </td>
+                      </tr>
+
+                      <!-- Row 6 -->
+                      <tr>
+                          <td class="p-4">L006</td>
+                          <td class="p-4">
+                              <span class="bg-green-100 text-green-600 px-3 py-1 rounded-full text-sm">পাওয়া</span>
+                          </td>
+                          <td class="p-4">বই</td>
+                          <td class="p-4">
+                              <span class="bg-blue-100 text-blue-600 px-3 py-1 rounded-full text-sm">অন্যান্য</span>
+                          </td>
+                          <td class="p-4">ফাতেমা বেগম</td>
+                          <td class="p-4">উত্তরা</td>
+                          <td class="p-4">
+                              <span class="bg-yellow-100 text-yellow-700 px-3 py-1 rounded-full text-sm">পেন্ডিং</span>
+                          </td>
+                          <td class="p-4">২০২৪-০১-১১</td>
+                          <td class="p-4 flex gap-3">
+                              <button class="bg-green-500 text-white px-4 py-1 rounded-lg text-sm">অনুমোদন</button>
+                              <button class="bg-red-500 text-white px-4 py-1 rounded-lg text-sm">বাতিল</button>
+                          </td>
+                      </tr>
+
+                  </tbody>
+              </table>
+          </div>
+      </section>
+
+    </div>
+
+    <div id="content-profile" class="tab-content mt-6 hidden">
+
+        <div class="bg-white p-8 rounded-xl shadow-sm max-w-3xl">
+
+            <div class="flex items-center gap-6 border-b pb-6">
+
+                <!-- Profile Image -->
+                <div>
+                    <div class="w-28 h-28 bg-blue-100 rounded-full flex items-center justify-center">
+                        <i class="fa-solid fa-user text-5xl text-blue-600"></i>
+                    </div>
+                </div>
+
+                <!-- Name & Info -->
+                <div>
+                    <h2 class="text-2xl font-semibold">আব্দুল করিম</h2>
+                    <p class="text-gray-600">ইউজার ID: U001</p>
+
+                    <span class="inline-block mt-2 bg-green-100 text-green-700 px-4 py-1 text-sm rounded-full">
+                        সক্রিয় সদস্য
+                    </span>
+                </div>
+            </div>
+
+            <!-- Phone -->
+            <div class="mt-6 border-b pb-4">
+                <p class="text-gray-600">ফোন নম্বর</p>
+                <p class="font-medium mt-1">০১৯১২৩৪৫৬৭৮</p>
+            </div>
+
+            <!-- Email -->
+            <div class="mt-6 border-b pb-4">
+                <p class="text-gray-600">ইমেইল</p>
+                <p class="font-medium mt-1">abdul.karim@example.com</p>
+            </div>
+
+            <!-- Area -->
+            <div class="mt-6 border-b pb-4">
+                <p class="text-gray-600">এলাকা</p>
+                <p class="font-medium mt-1">মিরপুর ১০, ঢাকা</p>
+            </div>
+
+            <!-- Join Date -->
+            <div class="mt-6 border-b pb-4">
+                <p class="text-gray-600">যোগদানের তারিখ</p>
+                <p class="font-medium mt-1">১০ জানুয়ারি, ২০২৪</p>
+            </div>
+
+            <!-- Edit Button -->
+            <div class="mt-8">
+                <button class="bg-green-600 text-white px-6 py-3 rounded-lg hover:bg-green-700 transition">
+                    প্রোফাইল সম্পাদনা করুন
+                </button>
+            </div>
+
+        </div>
+    </div>
+
+</section>
+
+<script>
+    // Tab buttons
+    const tabs = document.querySelectorAll(".tab-btn");
+    // Tab contents
+    const contents = document.querySelectorAll(".tab-content");
+
+    tabs.forEach(tab => {
+        tab.addEventListener("click", () => {
+            // remove active class from all buttons
+            tabs.forEach(btn => btn.classList.remove("active-tab"));
+            
+            // add active class to clicked button
+            tab.classList.add("active-tab");
+            
+            // hide all contents
+            contents.forEach(content => content.classList.add("hidden"));
+            
+            // show clicked content
+            const targetId = tab.id.replace("tab-", "content-");
+            const targetElement = document.getElementById(targetId);
+            
+            // Debug: check if element exists
+            if (targetElement) {
+                targetElement.classList.remove("hidden");
+                console.log("Showing:", targetId);
+            } else {
+                console.error("Element not found:", targetId);
+                // Show error or fallback
+                document.getElementById("content-report").classList.remove("hidden");
+            }
+        });
+    });
+</script>
+
+<!-- Tailwind style for active tab -->
+<style>
+    .tab-btn {
+        padding: 6px 10px;
+        font-size: 16px;
+        color: #555;
+    }
+    .active-tab {
+        color: #16a34a;
+        font-weight: 600;
+        border-bottom: 2px solid #16a34a;
+    }
+</style>
+
+
+<footer class="bg-green-800 text-white py-16 px-6">
+    <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-12">
+
+        <!-- Left Section -->
+        <div>
+            <h2 class="text-3xl font-bold mb-3">আপডেট পান</h2>
+            <p class="text-gray-200 mb-6">
+                নতুন ফিচার এবং কমিউনিটি আপডেট সম্পর্কে জানুন
+            </p>
+
+            <label class="text-gray-200 text-sm">আপনার ইমেইল</label>
+            <input type="email"
+                   class="w-full bg-transparent border-b border-gray-300 focus:outline-none py-2 text-white mb-4"
+                   placeholder="ইমেইল লিখুন">
+
+            <button class="mt-3 bg-white text-green-800 px-6 py-3 rounded-full font-semibold flex items-center space-x-2">
+                <span>সাবস্ক্রাইব করুন</span>
+                <span>→</span>
+            </button>
+
+            <div class="mt-10 flex space-x-8 text-gray-200">
+                <a href="#" class="hover:text-white">Facebook</a>
+                <a href="#" class="hover:text-white">Twitter</a>
+                <a href="#" class="hover:text-white">Instagram</a>
+            </div>
+        </div>
+
+        <!-- Middle Section -->
+        <div>
+            <h3 class="text-xl font-semibold mb-4">দ্রুত লিঙ্ক</h3>
+            <ul class="space-y-3 text-gray-200">
+                <li><a href="#" class="hover:text-white">সমস্যা রিপোর্ট</a></li>
+                <li><a href="#" class="hover:text-white">নিরাপত্তা সহায়তা</a></li>
+                <li><a href="#" class="hover:text-white">স্বেচ্ছাসেবক দল</a></li>
+                <li><a href="#" class="hover:text-white">CCTV আপডেট</a></li>
+            </ul>
+        </div>
+
+        <!-- Right Section -->
+        <div>
+            <h3 class="text-xl font-semibold mb-4">যোগাযোগ</h3>
+
+            <p class="mb-4">
+                ফোন: +৮৮০ ১১০০-০০০০০
+            </p>
+
+            <p class="mb-4">
+                ইমেইল: info@dinbodol.com
+            </p>
+
+            <h4 class="font-semibold mb-2">ঠিকানা</h4>
+            <p class="text-gray-200">
+                ধানমন্ডি, ঢাকা-১২০৫ <br>
+                বাংলাদেশ
+            </p>
+        </div>
+    </div>
+
+    <!-- Bottom Line -->
+    <div class="max-w-7xl mx-auto mt-12 pt-6 border-t border-gray-600 flex flex-col md:flex-row justify-between text-gray-300 text-sm">
+
+        <p>© ২০২৫ দিনেরবেলের এখনই সময়</p>
+
+        <div class="flex space-x-6 mt-4 md:mt-0">
+            <a href="#" class="hover:text-white">গোপনীয়তা নীতি</a>
+            <a href="#" class="hover:text-white">শর্তাবলী</a>
+            <a href="#" class="hover:text-white">Website Builder</a>
+            <a href="customer_dashboard.html" class="hover:text-white">User</a>
+            <a href="volunteer_dashboard.html" class="hover:text-white">Volunteer</a>
+            <a href="adminprofile.html" class="hover:text-white">Admin</a>
+        </div>
+    </div>
+</footer>
+
+
+<!-- Scroll Script -->
+<script>
+    const header = document.getElementById("mainHeader");
+
+    window.addEventListener("scroll", () => {
+        if (window.scrollY > 20) {
+            header.classList.remove("bg-transparent");
+            header.classList.add("bg-white", "shadow-md");
+        } else {
+            header.classList.remove("bg-white", "shadow-md");
+            header.classList.add("bg-transparent");
+        }
+    });
+</script>
+
+</body>
+</html>

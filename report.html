@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>দিনবদলের এখনই সময়</title>
+
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* Smooth transition */
+        .header-transition {
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
+        }
+    </style>
+</head>
+
+<body class="bg-gray-50">
+
+<header id="mainHeader"
+        class="fixed top-0 left-0 w-full z-50 header-transition bg-transparent">
+    <div class="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center">
+
+        <!-- Left: Logo + Title -->
+        <div class="flex items-center space-x-3">
+            <div class="w-10 h-10 bg-green-700 rounded-full flex items-center justify-center">
+                <span class="text-white text-xl font-bold">🏠</span>
+            </div>
+            <h1 class="text-xl font-semibold text-gray-900">
+                দিনবদলের এখনই সময়
+            </h1>
+        </div>
+
+        <nav class="flex space-x-8 text-gray-700 font-medium">
+            <a href="home.html" class="hover:text-green-700">হোম</a>
+            <a href="report.html" class="hover:text-green-700">সমস্যা রিপোর্ট</a>
+            <a href="safety.html" class="hover:text-green-700">নিরাপত্তা সহায়তা</a>
+            <a href="post.html" class="hover:text-green-700">হারানো-পাওয়া</a>
+            <a href="volunteer.html" class="hover:text-green-700">স্বেচ্ছাসেবক</a>
+            
+                
+            <a href="javascript:void(0);" onclick="openLoginModal()" 
+                class="text-black no-underline text-[16px]  hover:text-teal-600">
+                লগইন করুন
+            </a>
+                
+            <!-- Login Modal -->
+            <div id="loginModal" 
+                class="hidden fixed inset-0 w-full h-full bg-black/60 flex justify-center items-center z-[9999]">
+                
+                <div class="w-[350px] bg-white p-7 rounded-xl shadow-2xl relative mt-4 flex flex-col gap-3">
+                    
+                    <h2 class="text-center mb-1 text-[26px] font-bold">Welcome Back</h2>
+                    <p class="text-center text-gray-600 mb-1">Sign in to your Account</p>
+
+                    <form method="POST" action="" class="flex flex-col gap-3">
+                        
+                        <input type="text" name="username" placeholder="Email" required
+                            class="w-full p-3 border border-gray-400 rounded-md text-[15px] outline-none" />
+
+                        <input type="password" name="password" placeholder="Password" required
+                            class="w-full p-3 border border-gray-400 rounded-md text-[15px] outline-none" />
+
+                        <div class="flex justify-between items-center my-2">
+                            <label class="flex items-center text-[14px] cursor-pointer">
+                                <input type="checkbox" name="remember_me" class="mr-2 cursor-pointer" />
+                                Remember me
+                            </label>
+                            <a href="#" class="text-[#0D7C7C] text-[14px] no-underline">Forgot password?</a>
+                        </div>
+
+                        <button type="submit" 
+                                class="w-full p-3 bg-[#0D7C7C] text-white rounded-md text-[16px] font-semibold hover:bg-[#055B5B]">
+                            Login
+                        </button>
+                    </form>
+
+                    <!-- Divider -->
+                    <div>
+                        <div class="flex items-center justify-center my-4">
+                            <hr class="flex-1 border-gray-300" />
+                            <span class="mx-3 text-gray-500 text-[14px] font-medium">Or continue with</span>
+                            <hr class="flex-1 border-gray-300" />
+                        </div>
+
+                        <div class="flex justify-center mb-2">
+                            <a href="/accounts/google/login/"
+                            class="flex items-center gap-2 px-6 py-2 border border-gray-300 rounded-md text-[15px] 
+                                    bg-white text-gray-700 shadow-sm cursor-pointer no-underline 
+                                    hover:bg-gray-100 hover:shadow-md transition">
+                                <img src="{% static 'images/g.jpeg' %}" alt="Google" class="w-5 h-5">
+                                Continue with Google
+                            </a>
+                        </div>
+                    </div>
+
+                    <a href="#" class="text-center text-[15px] text-gray-800 no-underline mt-2">Sign Up</a>
+                </div>
+            </div>
+
+
+            <script>
+                document.addEventListener('DOMContentLoaded', function() {
+                    const modal = document.getElementById('loginModal');
+
+                    // Click on backdrop to close
+                    modal.addEventListener('click', function(e) {
+                    if (e.target === modal) {
+                        closeLoginModal();
+                    }
+                    });
+                });
+
+                function openLoginModal() {
+                    const modal = document.getElementById("loginModal");
+                    // Remove hidden and ensure display is cleared
+                    modal.classList.remove("hidden");
+                    modal.style.display = ""; // clear inline style if any
+                }
+
+                function closeLoginModal() {
+                    const modal = document.getElementById("loginModal");
+                    modal.classList.add("hidden");
+                    modal.style.display = ""; // avoid leaving display:none inline
+                }
+
+                // Remember me
+                document.addEventListener('DOMContentLoaded', function() {
+                    const checkbox = document.querySelector('input[name="remember_me"]');
+                    if (!checkbox) return;
+
+                    const rememberMe = localStorage.getItem('rememberMe');
+                    if (rememberMe === 'true') {
+                    checkbox.checked = true;
+                    }
+                    checkbox.addEventListener('change', function() {
+                    localStorage.setItem('rememberMe', this.checked);
+                    });
+                });
+            </script>
+
+        </nav>
+    </div>
+</header>
+  
+<main>
+
+<section class="bg-green-800 py-30 px-4">
+    <div class="max-w-4xl mx-auto text-center">
+        
+        <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4">
+        সমস্যা রিপোর্ট করুন
+        </h1>
+        
+        <h3 class="text-lg md:text-xl text-white/90">
+        আপনার এলাকার যেকোনো সমস্যা জানান এবং সমাধান ট্র্যাক করুন
+        </h3>
+        
+    </div>
+</section>
+
+<section class="py-12 px-4">
+    <!-- Buttons Section -->
+    <div class="max-w-4xl mx-auto mb-12">
+        <div class="flex justify-center gap-4">
+        <!-- নতুন রিপোর্ট Button -->
+        <button id="newReportBtn" class="bg-green-600 text-white px-8 py-3 rounded-lg font-medium text-lg hover:bg-green-700 transition">
+            নতুন রিপোর্ট
+        </button>
+        
+        <!-- রিপোর্ট ট্র্যাক করুন Button -->
+        <button id="trackReportBtn" class="bg-gray-200 text-gray-700 px-8 py-3 rounded-lg font-medium text-lg hover:bg-gray-300 transition">
+            রিপোর্ট ট্র্যাক করুন
+        </button>
+        </div>
+    </div>
+
+    <!-- Forms Section -->
+    <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-4 gap-8">
+        
+        <!-- Left Side - Forms (Grid 3) -->
+        <div class="lg:col-span-3">
+        <!-- New Report Form (Default - Visible) -->
+
+            <div id="newReportForm" class="bg-white p-8 rounded-xl shadow-lg">
+                <h3 class="text-3xl font-bold text-gray-900 mb-8">নতুন সমস্যা রিপোর্ট করুন</h3>
+
+                <form class="space-y-8">
+
+                    <!-- সমস্যার ধরন নির্বাচন -->
+                    <div>
+                        <h3 class="text-lg font-medium text-gray-700 mb-4">সমস্যার ধরন নির্বাচন করুন</h3>
+
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+
+                            <!-- Card 1 -->
+                            <div class="border rounded-xl p-5 flex flex-col items-center gap-3 hover:shadow-md cursor-pointer transition">
+                                <span class="text-green-600 text-3xl">
+                                    <i class="fa-solid fa-road"></i>
+                                </span>
+                                <p class="text-gray-700 font-medium">রাস্তা ও যোগাযোগ</p>
+                            </div>
+
+                            <!-- Card 2 -->
+                            <div class="border rounded-xl p-5 flex flex-col items-center gap-3 hover:shadow-md cursor-pointer transition">
+                                <span class="text-green-600 text-3xl">
+                                    <i class="fa-solid fa-bolt"></i>
+                                </span>
+                                <p class="text-gray-700 font-medium">বিদ্যুৎ</p>
+                            </div>
+
+                            <!-- Card 3 -->
+                            <div class="border rounded-xl p-5 flex flex-col items-center gap-3 hover:shadow-md cursor-pointer transition">
+                                <span class="text-green-600 text-3xl">
+                                    <i class="fa-solid fa-droplet"></i>
+                                </span>
+                                <p class="text-gray-700 font-medium">পানি সরবরাহ</p>
+                            </div>
+
+                            <!-- Card 4 -->
+                            <div class="border rounded-xl p-5 flex flex-col items-center gap-3 hover:shadow-md cursor-pointer transition">
+                                <span class="text-green-600 text-3xl">
+                                    <i class="fa-solid fa-trash"></i>
+                                </span>
+                                <p class="text-gray-700 font-medium">আবর্জনা ব্যবস্থাপনা</p>
+                            </div>
+
+                            <!-- Card 5 -->
+                            <div class="border rounded-xl p-5 flex flex-col items-center gap-3 hover:shadow-md cursor-pointer transition">
+                                <span class="text-green-600 text-3xl">
+                                    <i class="fa-solid fa-water"></i>
+                                </span>
+                                <p class="text-gray-700 font-medium">নর্দমা</p>
+                            </div>
+
+                            <!-- Card 6 -->
+                            <div class="border rounded-xl p-5 flex flex-col items-center gap-3 hover:shadow-md cursor-pointer transition">
+                                <span class="text-green-600 text-3xl">
+                                    <i class="fa-solid fa-ellipsis"></i>
+                                </span>
+                                <p class="text-gray-700 font-medium">অন্যান্য</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- সমস্যার শিরোনাম -->
+                    <div>
+                        <label class="block text-gray-700 mb-2 text-lg">সমস্যার শিরোনাম</label>
+                        <input type="text"
+                            class="w-full p-4 border border-gray-300 rounded-xl focus:ring-2 focus:ring-green-500 focus:border-green-500"
+                            placeholder="সংক্ষেপে সমস্যাটি লিখুন">
+                    </div>
+
+                    <!-- বিস্তারিত বর্ণনা -->
+                    <div>
+                        <label class="block text-gray-700 mb-2 text-lg">বিস্তারিত বর্ণনা</label>
+                        <textarea
+                            class="w-full p-4 border border-gray-300 rounded-xl h-32 focus:ring-2 focus:ring-green-500 focus:border-green-500"
+                            placeholder="সমস্যার বিস্তারিত বর্ণনা লিখুন..."></textarea>
+                    </div>
+
+                    <!-- স্থান -->
+                    <div>
+                        <label class="block text-gray-700 mb-2 text-lg">স্থান</label>
+                        <input type="text"
+                            class="w-full p-4 border border-gray-300 rounded-xl focus:ring-2 focus:ring-green-500 focus:border-green-500"
+                            placeholder="সমস্যার সঠিক অবস্থান/ঠিকানা">
+                    </div>
+
+                    <!-- মোবাইল নম্বর -->
+                    <div>
+                        <label class="block text-gray-700 mb-2 text-lg">মোবাইল নম্বর</label>
+                        <input type="tel"
+                            class="w-full p-4 border border-gray-300 rounded-xl focus:ring-2 focus:ring-green-500 focus:border-green-500"
+                            placeholder="০১৭XXXXXXXX">
+                    </div>
+
+                    <!-- Submit Button -->
+                    <button type="submit"
+                        class="w-full bg-green-600 text-white py-4 rounded-xl font-semibold text-lg hover:bg-green-700 transition">
+                        রিপোর্ট জমা দিন
+                    </button>
+
+                </form>
+            </div>
+
+
+            <!-- Track Report Form (Hidden by default) -->
+            <div id="trackReportForm" class="bg-white p-8 rounded-xl shadow-lg hidden">
+                <h3 class="text-2xl font-bold text-gray-800 mb-6">রিপোর্ট ট্র্যাক করুন</h3>
+                
+                <form>
+                    <div class="space-y-6">
+                        <div>
+                            <label class="block text-gray-700 mb-2">রিপোর্ট আইডি</label>
+                            <input type="text" class="w-full p-3 border border-gray-300 rounded-lg" placeholder="আপনার রিপোর্ট আইডি লিখুন">
+                        </div>
+                        
+                        <button type="submit" class="bg-green-600 text-white px-6 py-3 rounded-lg font-medium hover:bg-blue-700 transition">
+                        ট্র্যাক করুন
+                        </button>
+                    </div>
+                </form>
+
+                <div class="bg-white rounded-xl shadow-sm my-8 w-full p-5">
+    
+                    <!-- Header -->
+                    <div class="flex items-center justify-between mb-6">
+                        <div>
+                            <h3 class="font-bold text-gray-800 text-lg">ট্র্যাকিং ডিটেইলস</h3>
+                            <p class="text-sm text-gray-500">বিস্তারিত প্রক্রিয়া অবস্থা</p>
+                        </div>
+                        <div class="bg-blue-50 px-3 py-1 rounded-md">
+                            <span class="text-sm text-gray-600">আইডি:</span>
+                            <span class="font-bold text-blue-600 ml-1">RPT001</span>
+                        </div>
+                    </div>
+
+                    <!-- Status Steps -->
+                    <div class="space-y-5">
+                        
+                        <!-- Step 1 -->
+                        <div class="flex items-start gap-4">
+                            <div class="flex flex-col items-center">
+                                <div class="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center">
+                                    <span class="text-white text-sm font-bold">1</span>
+                                </div>
+                                <div class="w-0.5 h-10 bg-green-300 mt-2"></div>
+                            </div>
+                            <div class="flex-1">
+                                <div class="flex justify-between">
+                                    <span class="font-medium text-gray-800">রিপোর্ট গৃহীত</span>
+                                    <span class="text-xs text-gray-500">১০:৩০ AM</span>
+                                </div>
+                                <p class="text-sm text-gray-500 mt-1">সফলভাবে গৃহীত হয়েছে</p>
+                            </div>
+                        </div>
+
+                        <!-- Step 2 -->
+                        <div class="flex items-start gap-4">
+                            <div class="flex flex-col items-center">
+                                <div class="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center">
+                                    <span class="text-white text-sm font-bold">2</span>
+                                </div>
+                                <div class="w-0.5 h-10 bg-green-300 mt-2"></div>
+                            </div>
+                            <div class="flex-1">
+                                <div class="flex justify-between">
+                                    <span class="font-medium text-gray-800">পর্যালোচনা সম্পন্ন</span>
+                                    <span class="text-xs text-gray-500">১১:১৫ AM</span>
+                                </div>
+                                <p class="text-sm text-gray-500 mt-1">বিস্তারিত পর্যালোচনা সম্পন্ন</p>
+                            </div>
+                        </div>
+
+                        <!-- Step 3 -->
+                        <div class="flex items-start gap-4">
+                            <div class="flex flex-col items-center">
+                                <div class="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center">
+                                    <span class="text-white text-sm font-bold">3</span>
+                                </div>
+                                <div class="w-0.5 h-10 bg-green-300 mt-2"></div>
+                            </div>
+                            <div class="flex-1">
+                                <div class="flex justify-between">
+                                    <span class="font-medium text-gray-800">সমাধান প্রক্রিয়া</span>
+                                    <span class="text-xs text-gray-500">১২:০০ PM</span>
+                                </div>
+                                <p class="text-sm text-gray-500 mt-1">সমস্যা সমাধান চলমান</p>
+                            </div>
+                        </div>
+
+                        <!-- Step 4 -->
+                        <div class="flex items-start gap-4">
+                            <div class="flex flex-col items-center">
+                                <div class="w-8 h-8 bg-gray-300 rounded-full flex items-center justify-center">
+                                    <span class="text-gray-600 text-sm font-bold">4</span>
+                                </div>
+                            </div>
+                            <div class="flex-1">
+                                <div class="flex justify-between">
+                                    <span class="font-medium text-gray-800">সম্পন্ন</span>
+                                    <span class="text-xs text-gray-500">অপেক্ষমান</span>
+                                </div>
+                                <p class="text-sm text-gray-500 mt-1">সম্পূর্ণ সমাধান অপেক্ষমান</p>
+                            </div>
+                        </div>
+
+                    </div>
+                    
+
+                </div>
+            </div>
+        </div>
+
+        <!-- Right Side - Notifications (Grid 1) -->
+        <div class="lg:col-span-1">
+            <div class="bg-white p-6 rounded-xl shadow-lg">
+                <h4 class="text-lg font-bold text-gray-800 mb-4">নোটিফিকেশন</h4>
+                
+                <div class="space-y-4">
+                    <!-- Notification 1 -->
+                    <div class="border p-4 bg-gray-100 rounded-lg">
+                        <p class="text-sm text-black">রাস্তায় বড় গর্ত <span class="text-red-600 float-right font-medium">প্রক্রিয়াধীন</span></p>
+                        <p class="text-sm text-gray-600 mb-4">মিরপুর ১০ </p>
+                        <p class="text-sm text-gray-600 ">২ ঘন্টা আগে </p>
+                    </div>
+                    
+                    <!-- Notification 2 -->
+                    <div class="border p-4 bg-gray-100 rounded-lg">
+                        <p class="text-sm text-black">রাস্তায় বড় গর্ত <span class="text-red-600 float-right font-medium">প্রক্রিয়াধীন</span></p>
+                        <p class="text-sm text-gray-600 mb-4">মিরপুর ১০ </p>
+                        <p class="text-sm text-gray-600 ">২ ঘন্টা আগে </p>
+                    </div>
+                    
+                    <!-- Notification 3 -->
+                    <div class="border p-4 bg-gray-100 rounded-lg">
+                        <p class="text-sm text-black">রাস্তায় বড় গর্ত <span class="text-red-600 float-right font-medium">প্রক্রিয়াধীন</span></p>
+                        <p class="text-sm text-gray-600 mb-4">মিরপুর ১০ </p>
+                        <p class="text-sm text-gray-600 ">২ ঘন্টা আগে </p>
+                    </div>
+                    
+                    <!-- Notification 4 -->
+                    <div class="border p-4 bg-gray-100 rounded-lg">
+                        <p class="text-sm text-black">রাস্তায় বড় গর্ত <span class="text-red-600 float-right font-medium">প্রক্রিয়াধীন</span></p>
+                        <p class="text-sm text-gray-600 mb-4">মিরপুর ১০ </p>
+                        <p class="text-sm text-gray-600 ">২ ঘন্টা আগে </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+    const newReportBtn = document.getElementById('newReportBtn');
+    const trackReportBtn = document.getElementById('trackReportBtn');
+    const newReportForm = document.getElementById('newReportForm');
+    const trackReportForm = document.getElementById('trackReportForm');
+    
+    // Default: নতুন রিপোর্ট active
+    newReportBtn.classList.add('bg-green-600', 'text-white');
+    newReportBtn.classList.remove('bg-gray-200', 'text-gray-700');
+    trackReportBtn.classList.add('bg-gray-200', 'text-gray-700');
+    trackReportBtn.classList.remove('bg-green-600', 'text-white');
+    
+    // নতুন রিপোর্ট button click
+    newReportBtn.addEventListener('click', function() {
+        newReportForm.classList.remove('hidden');
+        trackReportForm.classList.add('hidden');
+        
+        newReportBtn.classList.add('bg-green-600', 'text-white');
+        newReportBtn.classList.remove('bg-gray-200', 'text-gray-700');
+        trackReportBtn.classList.add('bg-gray-200', 'text-gray-700');
+        trackReportBtn.classList.remove('bg-green-600', 'text-white');
+    });
+    
+    // রিপোর্ট ট্র্যাক করুন button click
+    trackReportBtn.addEventListener('click', function() {
+        trackReportForm.classList.remove('hidden');
+        newReportForm.classList.add('hidden');
+        
+        trackReportBtn.classList.add('bg-green-600', 'text-white');
+        trackReportBtn.classList.remove('bg-gray-200', 'text-gray-700');
+        newReportBtn.classList.add('bg-gray-200', 'text-gray-700');
+        newReportBtn.classList.remove('bg-green-600', 'text-white');
+    });
+    });
+</script>
+
+
+
+</main>
+
+<footer class="bg-green-800 text-white py-16 px-6">
+    <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-12">
+
+        <!-- Left Section -->
+        <div>
+            <h2 class="text-3xl font-bold mb-3">আপডেট পান</h2>
+            <p class="text-gray-200 mb-6">
+                নতুন ফিচার এবং কমিউনিটি আপডেট সম্পর্কে জানুন
+            </p>
+
+            <label class="text-gray-200 text-sm">আপনার ইমেইল</label>
+            <input type="email"
+                   class="w-full bg-transparent border-b border-gray-300 focus:outline-none py-2 text-white mb-4"
+                   placeholder="ইমেইল লিখুন">
+
+            <button class="mt-3 bg-white text-green-800 px-6 py-3 rounded-full font-semibold flex items-center space-x-2">
+                <span>সাবস্ক্রাইব করুন</span>
+                <span>→</span>
+            </button>
+
+            <div class="mt-10 flex space-x-8 text-gray-200">
+                <a href="#" class="hover:text-white">Facebook</a>
+                <a href="#" class="hover:text-white">Twitter</a>
+                <a href="#" class="hover:text-white">Instagram</a>
+            </div>
+        </div>
+
+        <!-- Middle Section -->
+        <div>
+            <h3 class="text-xl font-semibold mb-4">দ্রুত লিঙ্ক</h3>
+            <ul class="space-y-3 text-gray-200">
+                <li><a href="#" class="hover:text-white">সমস্যা রিপোর্ট</a></li>
+                <li><a href="#" class="hover:text-white">নিরাপত্তা সহায়তা</a></li>
+                <li><a href="#" class="hover:text-white">স্বেচ্ছাসেবক দল</a></li>
+                <li><a href="#" class="hover:text-white">CCTV আপডেট</a></li>
+            </ul>
+        </div>
+
+        <!-- Right Section -->
+        <div>
+            <h3 class="text-xl font-semibold mb-4">যোগাযোগ</h3>
+
+            <p class="mb-4">
+                ফোন: +৮৮০ ১১০০-০০০০০
+            </p>
+
+            <p class="mb-4">
+                ইমেইল: info@dinbodol.com
+            </p>
+
+            <h4 class="font-semibold mb-2">ঠিকানা</h4>
+            <p class="text-gray-200">
+                ধানমন্ডি, ঢাকা-১২০৫ <br>
+                বাংলাদেশ
+            </p>
+        </div>
+    </div>
+
+    <!-- Bottom Line -->
+    <div class="max-w-7xl mx-auto mt-12 pt-6 border-t border-gray-600 flex flex-col md:flex-row justify-between text-gray-300 text-sm">
+
+        <p>© ২০২৫ দিনেরবেলের এখনই সময়</p>
+
+        <div class="flex space-x-6 mt-4 md:mt-0">
+            <a href="#" class="hover:text-white">গোপনীয়তা নীতি</a>
+            <a href="#" class="hover:text-white">শর্তাবলী</a>
+            <a href="#" class="hover:text-white">Website Builder</a>
+            <a href="customer_dashboard.html" class="hover:text-white">User</a>
+            <a href="volunteer_dashboard.html" class="hover:text-white">Volunteer</a>
+            <a href="adminprofile.html" class="hover:text-white">Admin</a>
+        </div>
+    </div>
+</footer>
+
+
+<!-- Scroll Script -->
+<script>
+    const header = document.getElementById("mainHeader");
+
+    window.addEventListener("scroll", () => {
+        if (window.scrollY > 20) {
+            header.classList.remove("bg-transparent");
+            header.classList.add("bg-white", "shadow-md");
+        } else {
+            header.classList.remove("bg-white", "shadow-md");
+            header.classList.add("bg-transparent");
+        }
+    });
+</script>
+
+</body>
+</html>
